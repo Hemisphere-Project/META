@@ -125,6 +125,7 @@ d3.select(self.frameElement).style("height", height + "px");
 function dendoToForceData(data){
 
 	var result = {"nodes":[],"links":[]};
+	var currGp = 1;
 	function walkNodes(obj){
 		for (var key in obj)
 		{
@@ -136,16 +137,17 @@ function dendoToForceData(data){
 				//	if (typeof obj[key][k] == "object" && k !== "children" && obj[key][k] !== null)
 				//		result.links.push({"source":{"name":obj.name,"group":1},"target":{"name":obj[key][k].name,"group":1},"value":1})	
 				//}
-				
+				currGp++;
 				walkNodes(obj[key]);
 			}else{
 				if (!obj.hasOwnProperty(key))
 					continue;       // skip this property
 				if (key == "name"){
-					result.nodes.push({"name":obj[key],"group":1});
+					result.nodes.push({"name":obj[key],"group":currGp});
 				}
 			}
 		}
+		currGp--;
 	}
 	
 	walkNodes(data);
