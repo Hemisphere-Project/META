@@ -20,7 +20,7 @@
 
 </style>
 <body>
-<script src="d3.v3/d3.v3.min.js"></script>
+<script src="d3.v3/d3.v3.js"></script>
 <script>
 
 
@@ -86,10 +86,10 @@ d3.json("planetaryagenda_cd.json", function(error, root) {
 //      .text(function(d) { return d.name; });
 
 
-  force
-      .nodes(graph.nodes)
-      .links(graph.links)
-      .start();
+  force.nodes(graph.nodes);
+  force.links(graph.links);
+  console.log(JSON.stringify(graph.links));
+  force.start();      
   var link = svg.selectAll(".link")
       .data(graph.links)
     .enter().append("line")
@@ -125,7 +125,7 @@ d3.select(self.frameElement).style("height", height + "px");
 function dendoToForceData(data){
 
 	var result = {"nodes":[],"links":[]};
-	function walk(obj){
+	function walkNodes(obj){
 		for (var key in obj)
 		{
 			if (typeof obj[key] == "object" && obj[key] !== null){
@@ -137,7 +137,7 @@ function dendoToForceData(data){
 				//		result.links.push({"source":{"name":obj.name,"group":1},"target":{"name":obj[key][k].name,"group":1},"value":1})	
 				//}
 				
-				walk(obj[key]);
+				walkNodes(obj[key]);
 			}else{
 				if (!obj.hasOwnProperty(key))
 					continue;       // skip this property
@@ -148,9 +148,40 @@ function dendoToForceData(data){
 		}
 	}
 	
-	walk(data);
+	walkNodes(data);
 	
-	
+	function walkLinks(obj){
+		for (var key in obj)
+		{
+			if (typeof obj[key] == "object" && obj[key] !== null){
+				
+				for(var k in obj[key]){
+					//console.log(obj[key][k]);
+					if (typeof obj[key][k] == "object" && k !== "children" && obj[key][k] !== null){
+						result.links.push({"source":findNodeIndex(obj.name),"target":findNodeIndex(obj[key][k].name),"value":1});
+					}
+				}
+				
+				walkLinks(obj[key]);
+			}else{
+				//if (!obj.hasOwnProperty(key))
+				//	continue;       // skip this property
+				//if (key == "name"){
+				//	result.nodes.push({"name":obj[key],"group":1});
+				//}
+			}
+			
+			function findNodeIndex(name){
+				for (var i in result.nodes){
+					if(result.nodes[i].name === name)
+						return parseInt(i);
+				}
+				return -1;
+			}
+		}
+	}
+
+	walkLinks(data)	
 	
 	
 	
