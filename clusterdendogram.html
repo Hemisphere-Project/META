@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+</style>
+<body>
+<script src="d3.v3/d3.v3.min.js"></script>
+<script>
+
+
+
+//var width = 960,
+//    height = 2200;
+
+var width = 960,
+    height = 960;
+
+var color = d3.scale.category20();
+
+//var cluster = d3.layout.cluster()
+//    .size([height, width - 160]);
+var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(30)
+    .size([width, height]);
+
+//var diagonal = d3.svg.diagonal()
+//    .projection(function(d) { return [d.y, d.x]; });
+
+//var svg = d3.select("body").append("svg")
+//    .attr("width", width)
+//    .attr("height", height)
+//  .append("g")
+//    .attr("transform", "translate(40,0)");
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+
+
+d3.json("planetaryagenda_cd.json", function(error, root) {
+//d3.json("flare_.json", function(error, root) {
+  if (error) throw error;
+
+  var graph = dendoToForceData(root);
+  
+//  var nodes = cluster.nodes(root),
+//      links = cluster.links(nodes);
+      
+//  var link = svg.selectAll(".link")
+//      .data(links)
+//      .data(graph.links)
+//      .enter().append("path")
+//      .attr("class", "link")
+//      .attr("d", diagonal);
+
+//  var node = svg.selectAll(".node")
+//      .data(nodes)
+//      .enter().append("g")
+//      .attr("class", "node")
+//      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+
+//  node.append("circle")
+//      .attr("r", 4.5);
+
+//  node.append("text")
+//      .attr("dx", function(d) { return d.children ? -8 : 8; })
+//      .attr("dy", 3)
+//      .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
+//      .text(function(d) { return d.name; });
+
+
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", 5)
+      .style("fill", function(d) { return color(d.group); })
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+  
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+
+});
+
+d3.select(self.frameElement).style("height", height + "px");
+
+function dendoToForceData(data){
+
+	var result = {"nodes":[],"links":[]};
+	function walk(obj){
+		for (var key in obj)
+		{
+			if (typeof obj[key] == "object" && obj[key] !== null){
+				
+				// Ne marche pas ! il faudra refaire un tour pour les links !!
+				//for(var k in obj[key]){
+				//	console.log(obj[key][k]);
+				//	if (typeof obj[key][k] == "object" && k !== "children" && obj[key][k] !== null)
+				//		result.links.push({"source":{"name":obj.name,"group":1},"target":{"name":obj[key][k].name,"group":1},"value":1})	
+				//}
+				
+				walk(obj[key]);
+			}else{
+				if (!obj.hasOwnProperty(key))
+					continue;       // skip this property
+				if (key == "name"){
+					result.nodes.push({"name":obj[key],"group":1});
+				}
+			}
+		}
+	}
+	
+	walk(data);
+	
+	
+	
+	
+	
+	return result;
+}
+
+</script>

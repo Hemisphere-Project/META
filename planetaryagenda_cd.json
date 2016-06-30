@@ -1,0 +1,487 @@
+{
+ "name":"PLANETARY AGENDA",
+ "children": [{
+    "name": "RESPECT OURSELVES AND OUR PLANET",
+    "children": [{
+        "name": "CONSUME LESS",
+        "children": [{
+            "name": "Enforce sustainable agriculture",
+            "children": [{
+                "name": "Invest in seawater agriculture"
+            }, {
+                "name": "Promote vertical urban agriculture"
+            }, {
+                "name": "Promote community scale projects",
+                "children": [{
+                    "name": "Support agricultural cooperatives"
+                }]
+            }, {
+                "name": "Support hydroponics/aquaponics"
+            }, {
+                "name": "Invest in pure meat without growing animals"
+            }, {
+                "name": "Reduce losses from farm to mouth"
+            }]
+        }, {
+            "name": "Encourage vegetarianism",
+            "children": [{
+                "name": "Sponsor communication by the media"
+            }, {
+                "name": "Enact Food Assistance Convention"
+            }]
+        }, {
+            "name": "Secure water resources",
+            "children": [{
+                "name": "Support integrated water management"
+            }, {
+                "name": "Reuse treated water"
+            }, {
+                "name": "Invest in desalination systems"
+            }, {
+                "name": "Use selective introduction of water pricing"
+            }]
+        }]
+    }, {
+        "name": "DEVELOP GREEN/CLEAN TECHNOLOGIES",
+        "children": [{
+            "name": "Switch to renewable and sustainable energy",
+            "children": [{
+                "name": "Switch subsidies from fossil to renewable energy",
+                "children": [{
+                    "name": "Increase subsidies for renewable and reduce subsidies for fossil fuel"
+                }]
+            }, {
+                "name": "Retrofit fossil fuel plant to reuse CO2"
+            }, {
+                "name": "Invest in green growth technologies to address the gap",
+                "children": [{
+                    "name": "Enact global clean energy R&D system"
+                }]
+            }, {
+                "name": "Promote renewable energy policy : Feed-in-tariff (FIT) and renewable portfolio standard (RPS)"
+            }]
+        }, {
+            "name": "Invest in eco-smart cities",
+            "children": [{
+                "name": "Teach urban systems ecology",
+                "children": [{
+                    "name": "Promote human-nature symbioses"
+                }]
+            }, {
+                "name": "Integrate urban sensors to create smarter cities"
+            }]
+        }, {
+            "name": "Accelerate safe agro-technology R&D",
+            "children": [{
+                "name": "Develop safe food production",
+                "children": [{
+                    "name": "Watch for genetic engineering crops"
+                }, {
+                    "name": "Respect agricultural efficiencies"
+                }]
+            }]
+        }]
+    }, {
+        "name": "STABILIZE GLOBAL WARMING",
+        "children": [{
+            "name": "Respect eco-systems",
+            "children": [{
+                "name": "Protect wildlife",
+                "children": [{
+                    "name": "Enforce endangered species protection worldwide"
+                }, {
+                    "name": "Create animal rights declaration"
+                }, {
+                    "name": "Respect life cycle renewal"
+                }]
+            }, {
+                "name": "Protect natural areas",
+                "children": [{
+                    "name": "Stop deep water fishing"
+                }, {
+                    "name": "Stop deforestation",
+                    "children": [{
+                        "name": "Support reforestation"
+                    }]
+                }]
+            }]
+        }, {
+            "name": "Reduce CO2 production",
+            "children": [{
+                "name": "Reduce CO2 to 350ppm"
+            }, {
+                "name": "Invest in ways to reduce GHGs that are already in the atmosphere"
+            }, {
+                "name": "Apply Carbon Tax and cap and trade"
+            }]
+        }, {
+            "name": "Adapt to address the forecasts",
+            "children": [{
+                "name": "Enact Warsaw International Mechanism for Loss and Damages"
+            }, {
+                "name": "Prepare and act for climate migration/refugee"
+            }]
+        }]
+    }]
+}, {
+    "name": "STAY UNITED",
+    "children": [{
+        "name": "INCREASE INTERNATIONAL COOPERATION",
+        "children": [{
+            "name": "Increase interdependence",
+            "children": [{
+                "name": "Promote e-democracy and we-democracy",
+                "children": [{
+                    "name": "Create an international framework for migrants"
+                }]
+            }, {
+                "name": "Attract foreign direct investment",
+                "children": [{
+                    "name": "Enact long-term strategic plan for equitable economic development"
+                }, {
+                    "name": "Grow South-south cooperation"
+                }, {
+                    "name": "Encourage multilateral cooperation"
+                }]
+            }, {
+                "name": "Promote development of global collective intelligence systems"
+            }]
+        }, {
+            "name": "Regulate Global Speculation",
+            "children": [{
+                "name": "Outlaw tax havens"
+            }, {
+                "name": "Enact taxation on international financial transactions"
+            }, {
+                "name": "Enact global financial regulations"
+            }]
+        }, {
+            "name": "Push for a greater effectiveness of international institutions",
+            "children": [{
+                "name": "Curb human trafficking"
+            }, {
+                "name": "Curb corruption and lobbying"
+            }]
+        }]
+    }, {
+        "name": "FOSTER REGIONAL POLICIES",
+        "children": [{
+            "name": "Enact and enforce protection of minorities"
+        }, {
+            "name": "Create national collective intelligence systems",
+            "children": [{
+                "name": "Establish and link collective intelligence systems"
+            }]
+        }]
+    }, {
+        "name": "FOSTER NEW POLITICAL MODELS",
+        "children": [{
+            "name": "Integrate Government Leader's Future Unit",
+            "children": [{
+                "name": "Create SOFIs"
+            }, {
+                "name": "Train policymakers in decisionmaking"
+            }]
+        }, {
+            "name": "Sustain long-term political reform",
+            "children": [{
+                "name": "Create transinstitutions"
+            }]
+        }]
+    }, {
+        "name": "IMPROVE HUMAN LIFE CONDITIONS",
+        "children": [{
+            "name": "Assure human rights application",
+            "children": [{
+                "name": "Enact internet access right of citizenship",
+                "children": [{
+                    "name": "Foster elderly income via internet"
+                }, {
+                    "name": "Protect communication infrastructure",
+                    "children": [{
+                        "name": "Enforce International Cyber treaty"
+                    }]
+                }]
+            }, {
+                "name": "Support status of women",
+                "children": [{
+                    "name": "Encourage media re-orientation",
+                    "children": [{
+                        "name": "Support role models"
+                    }]
+                }, {
+                    "name": "Promote gender equality",
+                    "children": [{
+                        "name": "Enact gender legislation"
+                    }]
+                }, {
+                    "name": "Prosecute violence against women",
+                    "children": [{
+                        "name": "Foster COMMIT Initiative"
+                    }]
+                }]
+            }]
+        }, {
+            "name": "Reduce the income gap",
+            "children": [{
+                "name": "Enact universal minimum income",
+                "children": [{
+                    "name": "Ensure taxation fairness"
+                }]
+            }, {
+                "name": "Achieve post-millennium development goals",
+                "children": [{
+                    "name": "Support growth paradigm shift"
+                }, {
+                    "name": "Improve living standards reflecting the benefits of new technologies"
+                }]
+            }]
+        }, {
+            "name": "Support health access",
+            "children": [{
+                "name": "Continue and direct global health funding",
+                "children": [{
+                    "name": "Continue G7 Academies of science strategy"
+                }, {
+                    "name": "Enact policies for future global health paradigms",
+                    "children": [{
+                        "name": "Replan and extend millennium development goals and global health initiatives"
+                    }]
+                }]
+            }, {
+                "name": "Enact epidemic diseases policies",
+                "children": [{
+                    "name": "Support immunization policies"
+                }]
+            }, {
+                "name": "Create global healthcare",
+                "children": [{
+                    "name": "Invest in local health system development"
+                }]
+            }, {
+                "name": "Optimize the use of health technologies",
+                "children": [{
+                    "name": "Support WHO eHealths systems"
+                }, {
+                    "name": "Access to medicines policies"
+                }]
+            }]
+        }, {
+            "name": "Support education access",
+            "children": [{
+                "name": "Support new education models",
+                "children": [{
+                    "name": "Boost problem centered approach : multidisciplinary learning"
+                }, {
+                    "name": "Encourage democratic usages of learning systems",
+                    "children": [{
+                        "name": "Support national programs to improve individual and collective intelligence"
+                    }]
+                }, {
+                    "name": "Integrate life-long learning systems",
+                    "children": [{
+                        "name": "Support digital classroom",
+                        "children": [{
+                            "name": "Increase legitimacy of online education"
+                        }]
+                    }, {
+                        "name": "Promote continual reassessment of educational goals"
+                    }]
+                }]
+            }, {
+                "name": "Provide learning facilities to developing country",
+                "children": [{
+                    "name": "Provide healthy/clean learning environments"
+                }, {
+                    "name": "Improve individual nutrition"
+                }]
+            }]
+        }]
+    }, {
+        "name": "MAINTAIN PEACE",
+        "children": [{
+            "name": "Adapt to asymmetric conflicts",
+            "children": [{
+                "name": "Develop better strategies to combat terrorist groups",
+                "children": [{
+                    "name": "Limit access to materials thant can be used by individuals for destructive purposes"
+                }]
+            }, {
+                "name": "Enact global strategy against TOC",
+                "children": [{
+                    "name": "Create TOC Crime Against Humanity ICC"
+                }, {
+                    "name": "Deputize Courts (ICC)"
+                }]
+            }, {
+                "name": "Build Cyber/info warfare deterrence"
+            }]
+        }, {
+            "name": "Enact global peacekeeping strategies",
+            "children": [{
+                "name": "Improve strategies for coordinating intervention in ongoing armed conflicts"
+            }, {
+                "name": "Develop transnational justice entities",
+                "children": [{
+                    "name": "Promote the adoption of laws respecting human rights by all countries"
+                }, {
+                    "name": "Minimize corruption in government and business"
+                }]
+            }, {
+                "name": "Improve security of nuclear, biological and chemical (NBC) stocks"
+            }, {
+                "name": "Develop early warning systems"
+            }, {
+                "name": "Direct more resources to the development and implementation of conflict prevention strategies"
+            }]
+        }]
+    }]
+}, {
+    "name": "PUSH FORWARD",
+    "children": [{
+        "name": "ENGAGE IN  NEW INDUSTRIAL PARADIGMS",
+        "children": [{
+            "name": "Support circular economy",
+            "children": [{
+                "name": "Invest in recycling tech"
+            }, {
+                "name": "Foster decreasing costs of renewable energy systems"
+            }]
+        }, {
+            "name": "Accelerate data processing systems",
+            "children": [{
+                "name": "Promote IoT"
+            }]
+        }, {
+            "name": "Invest in 3D/4D technology",
+            "children": [{
+                "name": "Spread 3D manufacturing"
+            }]
+        }]
+    }, {
+        "name": "EXPAND KNOWLEDGE",
+        "children": [{
+            "name": "Invest in new media communication",
+            "children": [{
+                "name": "Create collective intelligence systems"
+            }, {
+                "name": "Apply augmented reality for professional use"
+            }, {
+                "name": "Invest in televerything",
+                "children": [{
+                    "name": "Encourage telemedecine"
+                }]
+            }]
+        }, {
+            "name": "Foster new physics theories",
+            "children": [{
+                "name": "Support quantum theory research"
+            }, {
+                "name": "Invest in quantum computing"
+            }]
+        }, {
+            "name": "Invest in computational sciences"
+        }, {
+            "name": "Create open knowledge repositories",
+            "children": [{
+                "name": "Promote open source hardware and software"
+            }, {
+                "name": "Foster open data programs"
+            }]
+        }]
+    }, {
+        "name": "SUPPORT ROBOTICS AND AI DEVELOPMENT",
+        "children": [{
+            "name": "Foster nanotechnologies",
+            "children": [{
+                "name": "Use nanobots in health therapies"
+            }, {
+                "name": "Watch for environmental concerns"
+            }, {
+                "name": "Invest in smart dust"
+            }]
+        }, {
+            "name": "Regulate AI development",
+            "children": [{
+                "name": "Achieve globally connected artificial intelligence"
+            }, {
+                "name": "Develop deep learning processes"
+            }]
+        }, {
+            "name": "Integrate peacefully robots in human societies",
+            "children": [{
+                "name": "Create robotic workforce legislative framework"
+            }]
+        }]
+    }, {
+        "name": "SUPPORT RESEARCH",
+        "children": [{
+            "name": "Increase R&D funding",
+            "children": [{
+                "name": "Set objective of Worldwide R&D spending : 2,5% of Global GDP"
+            }, {
+                "name": "Reduce funding for weaponry research",
+                "children": [{
+                    "name": "Increase funding of R&D for societal needs"
+                }]
+            }]
+        }, {
+            "name": "Create International S&T Organization",
+            "children": [{
+                "name": "Sustain leap Frog Technological Approach"
+            }]
+        }, {
+            "name": "Support open access research"
+        }]
+    }, {
+        "name": "ENGAGE IN TECH-ETHICS DEBATE",
+        "children": [{
+            "name": "Begin discussion of ethics of science and issues raised by new inventions",
+            "children": [{
+                "name": "Raise awareness of the power of exponential technologies"
+            }, {
+                "name": "Reduce threats from unintended consequences of science"
+            }]
+        }, {
+            "name": "Anticipate potential impacts of longevity technologies"
+        }, {
+            "name": "Watch for human enhancement and cyborgization",
+            "children": [{
+                "name": "Develop plans for a post singularity world"
+            }]
+        }]
+    }, {
+        "name": "SUPPORT SPACE DEVELOPMENT PROGRAMS",
+        "children": [{
+            "name": "Expand observatory satellites fleet",
+            "children": [{
+                "name": "Switch to electricity-supplied satellites"
+            }]
+        }, {
+            "name": "Invest in reusable space planes",
+            "children": [{
+                "name": "Start human space settlements experience"
+            }]
+        }]
+    }, {
+        "name": "FOSTER LIFE SCIENCES DEVELOPMENT",
+        "children": [{
+            "name": "Watch and regulate genetic manipulations",
+            "children": [{
+                "name": "Develop individual genetic medicine"
+            }, {
+                "name": "Develop synthetic biology"
+            }]
+        }, {
+            "name": "Invest in brain exploration and comprehension",
+            "children": [{
+                "name": "Develop MRI imaging processes"
+            }, {
+                "name": "Develop brain to brain communication"
+            }]
+        }, {
+            "name": "Invest in stem cells research"
+        }]
+    }]
+}]
+}
