@@ -2,10 +2,8 @@ body{
 	overflow:hidden;	
 }
 
-.node circle {
-  fill: #fff;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+.node text{
+  /*fill: #fff;*/
 }
 
 .node {
@@ -14,6 +12,6 @@ body{
 
 .link {
   fill: none;
-  stroke: #ccc;
+  stroke: #E64047;
   stroke-width: 1.5px;
 }
