@@ -5,6 +5,10 @@ body{
 .node text{
   /*fill: #fff;*/
 }
+.node rect{
+	fill:white;
+	fill-opacity:1;	
+}
 
 .node {
   font: 5px sans-serif;
@@ -12,6 +16,5 @@ body{
 
 .link {
   fill: none;
-  stroke: #E64047;
   stroke-width: 1.5px;
 }

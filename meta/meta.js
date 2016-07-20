@@ -9,6 +9,7 @@ var i = 0,
 duration = 750, 
 root;
 
+var colors = ["black","#FEBC59","#E64047","#4AA6E7"];
 
 
 
@@ -43,39 +44,12 @@ d3.json("planetaryagenda_cd.json", function(error, data) {
 		root.x0 = height / 2;
 		root.y0 = 0;
 		
+		addGroupToData(data)
+		
 		
 		var nodes = tree.nodes(root),
 		links = tree.links(nodes);
 		
-		
-		/*	var link = svg.selectAll(".link")
-		.data(tree.links(nodes))
-		.enter().append("path")
-		.attr("class", "link")
-		.attr("d", elbow);*/
-		
-		
-		/*var node = svg.selectAll(".node")
-		.data(nodes)
-		.enter().append("g")
-		.attr("class", "node")
-		.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })*/
-		
-		
-		/*	var text = node.append("text")
-		.attr("dy", ".31em")
-		.attr("text-anchor", function(d) { return "middle"; })
-		.text(function(d) { return d.name; });
-		
-		var rect = node.append("rect")
-		.attr("x", function(d) {return this.parentNode.getBBox().x - 3;})
-		.attr("y", function(d) {return this.parentNode.getBBox().y - 3;})
-		.attr("width", function(d) {return this.parentNode.getBBox().width + 6;})
-		.attr("height", function(d) {return this.parentNode.getBBox().height + 6;})
-		.style("fill", "#ccc")
-		.style("fill-opacity", ".3")
-		.style("stroke", "#666")
-		.style("stroke-width", "1.5px");*/
 		
 		function collapse(d) {
 			if (d.children) {
@@ -88,12 +62,6 @@ d3.json("planetaryagenda_cd.json", function(error, data) {
 		root.children.forEach(collapse);
 		update(root);
 		
-		
-		/*node.append("rect")
-		.attr("width", 20)
-		.attr("height",4)
-		.attr("fill","#008d46");
-		*/
 });
 
 //d3.select(self.frameElement).style("height", height + "px");
@@ -130,16 +98,14 @@ function update(source) {
 	
 	
 	var rect = nodeEnter.append("rect")
-	.style("fill", "#E64047")
-	.style("fill-opacity", "0")
-	.style("stroke", "#E64047")
+	.style("stroke", function(d) { return colors[d.gp]; })
 	.style("stroke-width", "1.5px");
 	
 	
 	var text = nodeEnter.append("text")
 	.attr("dy", ".31em")
 	.attr("text-anchor", function(d) { return "middle"; })
-	.attr("fill","#E64047")
+	.attr("fill",function(d) { return colors[d.gp]; })
 	.text(function(d) { return d.name; });
 	
 	rect.attr("x", function(d) {return this.parentNode.getBBox().x - 3;})
@@ -158,10 +124,10 @@ function update(source) {
 	.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 	
 	nodeUpdate.select("rect")
-	.style("fill-opacity", function(d) { return d._children ? "0" : "1"; });
+	.style("fill", function(d) { return d._children ? "white" : colors[d.gp]; });
 	
 	nodeUpdate.select("text")
-	.style("fill", function(d) { return d._children ? "#E64047" : "#FFF"; });
+	.style("fill", function(d) { return d._children ? colors[d.gp] : "#FFF"; });
 	
 	
 	// Transition exiting nodes to the parent's new position.
@@ -184,20 +150,16 @@ function update(source) {
 	// Enter any new links at the parent's previous position.
 	link.enter().insert("path", "g")
 	.attr("class", "link")
+	.attr("stroke", function(d) { console.log(d); return colors[d.target.gp]; })
 	.attr("d", function(d) {
 			var o = {x: source.x0, y: source.y0};
-			//return diagonal({source: o, target: o});
-			return "M" + source.y0 + "," + source.x0;
+			return diagonal({source: o, target: o});
 	});
 	
 	// Transition links to their new position.
 	link.transition()
 	.duration(duration)
-	//.attr("d", diagonal);
-	.attr("d", function(d){
-			return "M" + d.source.y + "," + d.source.x
-			+ "V" + d.target.x + "H" + d.target.y;		
-	});
+	.attr("d", diagonal);
 	
 	// Transition exiting nodes to the parent's new position.
 	link.exit().transition()
@@ -231,5 +193,38 @@ function click(d) {
 function zoom() {
 	svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 }
+
+
+
+
+function addGroupToData(data){
+
+	var currDepth = 0;
+	var currBranch = 0;
+	function walkNodes(obj){
+		console.log(obj.name+"    "+currDepth+"    "+currBranch);
+		if(!Array.isArray(obj))
+			obj.gp = currBranch;
+		
+		for (var key in obj)
+		{
+			if (typeof obj[key] == "object" && obj[key] !== null){
+				
+				currDepth++;
+				if(currDepth == 2) currBranch++; // 2 car on compte les array dans currDepth
+			
+				walkNodes(obj[key]);
+			}
+		}
+			currDepth--;
+	}
+	
+	walkNodes(data);
+	
+	
+}
+
+
+
 
 
