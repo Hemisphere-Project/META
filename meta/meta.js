@@ -1,9 +1,9 @@
-var width = 960,
-height = 960;
 var nodeWidth = 100;
 var nodeHeight = 30;
 var width = window.innerWidth*0.9,
 height = window.innerHeight*0.9;
+var initialScale = 1;
+
 
 var i = 0,
 duration = 750, 
@@ -14,8 +14,8 @@ var colors = ["black","#FEBC59","#E64047","#4AA6E7"];
 
 
 var tree = d3.layout.tree()
-.size([height, width ]);
-//.nodeSize([nodeHeight,nodeWidth]);
+//.size([height, width ]);
+.nodeSize([nodeHeight,nodeWidth]);
 
 var diagonal = d3.svg.diagonal()
 .projection(function(d) { return [d.y, d.x]; });
@@ -28,11 +28,27 @@ function elbow(d, i) {
 var svg = d3.select("body").append("svg")
 .attr("width", width)
 .attr("height", height)
-.call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom))
+//.call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom))
 .append("g")
-.attr("transform", "translate(40,0)");
+.attr("transform", "translate("+width/2+","+height/2+")scale("+initialScale+")")
+.on("click",onMouseClick);
 
+var zoom = d3.behavior.zoom();
+d3.select("svg").call(zoom.scaleExtent([1, 8]).on("zoom", onZoom));
 
+zoom.scale(initialScale);
+zoom.translate([width/2, height/2]);
+
+function onZoom() {
+	svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+}
+
+function onMouseClick(d,i){
+	//var mousePos = d3.mouse(this);
+	//console.log(mousePos);	
+	//svg.attr("transform", "translate(" + mousePos[0] +","+mousePos[1] + ")scale(" + zoom.scale() + ")");
+	
+}
 
 
 
@@ -44,25 +60,29 @@ d3.json("planetaryagenda_cd.json", function(error, data) {
 		root.x0 = height / 2;
 		root.y0 = 0;
 		
-		addGroupToData(data)
-		
-		
+		addGroupParam(data);
+				
 		var nodes = tree.nodes(root),
 		links = tree.links(nodes);
 		
+		addSelectedParam(nodes);
 		
-		function collapse(d) {
-			if (d.children) {
-				d._children = d.children;
-				d._children.forEach(collapse);
-				d.children = null;
-			}
-		}
 		
-		root.children.forEach(collapse);
+
+		
+		//root.children.forEach(collapse);
+		collapse(root);
 		update(root);
 		
 });
+
+function collapse(d) {
+	if (d.children) {
+		d._children = d.children;
+		d._children.forEach(collapse);
+		d.children = null;
+	}
+}
 
 //d3.select(self.frameElement).style("height", height + "px");
 function update(source) {
@@ -72,7 +92,7 @@ function update(source) {
 	links = tree.links(nodes);
 	
 	// Normalize for fixed-depth.
-	nodes.forEach(function(d) { d.y = d.depth * 180; });
+	nodes.forEach(function(d) { d.y = d.depth * 150; });
 	
 	// Update the nodes…
 	var node = svg.selectAll("g.node")
@@ -123,11 +143,18 @@ function update(source) {
 	.duration(duration)
 	.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 	
+	//si on vient de cliquer le noeud ou si c'est une terminaison, on le selectionne
 	nodeUpdate.select("rect")
-	.style("fill", function(d) { return d._children ? "white" : colors[d.gp]; });
+	.style("fill", function(d) { 
+		//return d._children ? "white" : colors[d.gp]; 
+		return d.selected ? colors[d.gp] : "white";
+	});
 	
 	nodeUpdate.select("text")
-	.style("fill", function(d) { return d._children ? colors[d.gp] : "#FFF"; });
+	.style("fill", function(d) { 
+		//return d._children ? colors[d.gp] : "#FFF"; 
+		return d.selected ? "white" : colors[d.gp];
+	});
 	
 	
 	// Transition exiting nodes to the parent's new position.
@@ -150,7 +177,7 @@ function update(source) {
 	// Enter any new links at the parent's previous position.
 	link.enter().insert("path", "g")
 	.attr("class", "link")
-	.attr("stroke", function(d) { console.log(d); return colors[d.target.gp]; })
+	.attr("stroke", function(d) { return colors[d.target.gp]; })
 	.attr("d", function(d) {
 			var o = {x: source.x0, y: source.y0};
 			return diagonal({source: o, target: o});
@@ -179,6 +206,9 @@ function update(source) {
 
 // Toggle children on click.
 function click(d) {
+	
+	d.selected = !d.selected;
+	
 	if (d.children) {
 		d._children = d.children;
 		d.children = null;
@@ -190,19 +220,16 @@ function click(d) {
 }
 
 
-function zoom() {
-	svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-}
 
 
 
 
-function addGroupToData(data){
+
+function addGroupParam(data){
 
 	var currDepth = 0;
 	var currBranch = 0;
 	function walkNodes(obj){
-		console.log(obj.name+"    "+currDepth+"    "+currBranch);
 		if(!Array.isArray(obj))
 			obj.gp = currBranch;
 		
@@ -224,6 +251,9 @@ function addGroupToData(data){
 	
 }
 
+function addSelectedParam(nodes){
+	nodes.forEach(function(d) { d.selected = false });
+}
 
 
 
