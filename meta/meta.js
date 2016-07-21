@@ -11,6 +11,15 @@ root;
 
 var colors = ["black","#FEBC59","#E64047","#4AA6E7"];
 
+var completePaths = [];
+completePaths.addPath = function(d){
+	completePaths.push(new MetaPath(d));	
+}
+completePaths.removePath = function(d){
+	for(var k=0;k<completePaths.length;k++){
+		if(completePaths[k].lastNode === d) return completePaths.splice(k,1);	
+	}
+}
 
 
 var tree = d3.layout.tree()
@@ -76,15 +85,7 @@ d3.json("planetaryagenda_cd.json", function(error, data) {
 		
 });
 
-function collapse(d) {
-	if (d.children) {
-		d._children = d.children;
-		d._children.forEach(collapse);
-		d.children = null;
-	}
-}
 
-//d3.select(self.frameElement).style("height", height + "px");
 function update(source) {
 	
 	// Compute the new tree layout.
@@ -207,11 +208,25 @@ function update(source) {
 // Toggle children on click.
 function click(d) {
 	
-	d.selected = !d.selected;
+	// push pop paths
+	if(!d.children && !d._children){
+		if(d.selected){
+			completePaths.removePath(d);
+		}else{
+			completePaths.addPath(d);
+		}
+	}
 	
+	console.log(completePaths);
+	// select / unselect nodes
+	d.selected = !d.selected;
+	if(!d.selected) unselectChildren(d);
+	
+	// fold / unfold branches
 	if (d.children) {
-		d._children = d.children;
-		d.children = null;
+		//d._children = d.children;
+		//d.children = null;
+		collapse(d);
 	} else {
 		d.children = d._children;
 		d._children = null;
@@ -222,7 +237,13 @@ function click(d) {
 
 
 
-
+function collapse(d) {
+	if (d.children) {
+		d._children = d.children;
+		d._children.forEach(collapse);
+		d.children = null;
+	}
+}
 
 
 function addGroupParam(data){
@@ -255,6 +276,15 @@ function addSelectedParam(nodes){
 	nodes.forEach(function(d) { d.selected = false });
 }
 
+function unselectChildren(d){
+	
+	if(!d.children && !d._children && d.selected) completePaths.removePath(d);
+	
+	d.selected = false;
+	if (d.children) {
+		d.children.forEach(unselectChildren);
+	}	
+}
 
 
 
