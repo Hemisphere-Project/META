@@ -3,6 +3,7 @@ var nodeHeight = 30;
 var width = window.innerWidth*0.9,
 height = window.innerHeight*0.9;
 var initialScale = 1;
+var screenCenter = {"x":width/2,"y":height/2};
 
 
 var i = 0,
@@ -10,6 +11,8 @@ duration = 750,
 root;
 
 var colors = ["black","#FEBC59","#E64047","#4AA6E7"];
+
+/* PATH LIST */
 
 var completePaths = [];
 completePaths.addPath = function(d){
@@ -20,6 +23,8 @@ completePaths.removePath = function(d){
 		if(completePaths[k].lastNode === d) return completePaths.splice(k,1);	
 	}
 }
+
+/* */
 
 
 var tree = d3.layout.tree()
@@ -34,26 +39,81 @@ function elbow(d, i) {
 	+ "V" + d.target.x + "H" + d.target.y;
 }
 
+
+/* SVG */
+
 var svg = d3.select("body").append("svg")
 .attr("width", width)
 .attr("height", height)
 //.call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom))
 .append("g")
-.attr("transform", "translate("+width/2+","+height/2+")scale("+initialScale+")")
-.on("click",onMouseClick);
+.attr("transform", "translate("+screenCenter.x+","+screenCenter.y+")scale("+initialScale+")")
+
+
+d3.select("svg").on("click", function() {
+		/*var coords = d3.mouse(this);
+		console.log(coords);
+		//if(d3.event.target.nodeName != "svg"){
+			var targetX = 2*screenCenter.x - coords[0],
+				targetY = 2*screenCenter.y - coords[1];
+				console.log(coords+"  "+targetX+"  "+targetY);
+				svg.attr("transform", "translate("+targetX+","+targetY+")scale(" + svgCurrScale + ")");
+				//svgCurrTranslate = [targetX,targetY];
+				//zoom.translate(svgCurrTranslate);
+		//}*/
+		
+ });
+
+
+var svgCurrTranslate = [width/2,height/2];
+var svgCurrTranslateOffset = [0,0];
+var svgCurrScale = initialScale;
+
+
+function updateSVGPos(node){
+	
+	if(!node.children && !node._children)
+		return;//si terminaison on se casse
+	
+	
+	if(svgCurrTranslateOffset[0] != node.x || svgCurrTranslateOffset[1] != node.y ){
+		
+		svgCurrTranslateOffset[0] = node.y*svgCurrScale;
+		svgCurrTranslateOffset[1] = node.x*svgCurrScale;
+		svgCurrTranslate[0] = screenCenter.x - svgCurrTranslateOffset[0];
+		svgCurrTranslate[1] = screenCenter.y - svgCurrTranslateOffset[1];
+		
+		//svg.attr("transform", "translate("+svgCurrTranslate[0]+","+svgCurrTranslate[1]+")scale(" + svgCurrScale + ")");
+		
+		svg.transition()
+		.duration(duration)
+		.attr("transform", function() { 
+			return "translate("+svgCurrTranslate[0]+","+svgCurrTranslate[1]+")scale(" + svgCurrScale + ")"; 
+		});
+		
+		zoom.translate([svgCurrTranslate[0], svgCurrTranslate[1]]);
+		
+	}
+		
+}
+
+/* ZOOM */
 
 var zoom = d3.behavior.zoom();
-d3.select("svg").call(zoom.scaleExtent([1, 8]).on("zoom", onZoom));
+d3.select("svg").call(zoom.scaleExtent([1, 2]).on("zoom", onZoom));
 
 zoom.scale(initialScale);
 zoom.translate([width/2, height/2]);
 
 function onZoom() {
+	//console.log(d3.event.translate);
+	svgCurrTranslate = d3.event.translate;
+	svgCurrScale = d3.event.scale;
 	svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 }
 
 function onMouseClick(d,i){
-	//var mousePos = d3.mouse(this);
+	var mousePos = d3.mouse(svg);
 	//console.log(mousePos);	
 	//svg.attr("transform", "translate(" + mousePos[0] +","+mousePos[1] + ")scale(" + zoom.scale() + ")");
 	
@@ -66,7 +126,7 @@ d3.json("planetaryagenda_cd.json", function(error, data) {
 		
 		
 		root = data;
-		root.x0 = height / 2;
+		root.x0 = 0;
 		root.y0 = 0;
 		
 		addGroupParam(data);
@@ -105,17 +165,6 @@ function update(source) {
 	.attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
 	.on("click", click);
 	
-	/*nodeEnter.append("circle")
-	.attr("r", 1e-6)
-	.style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-	
-	nodeEnter.append("text")
-	.attr("x", function(d) { return d.children || d._children ? -10 : 10; })
-	.attr("dy", ".35em")
-	.attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-	.text(function(d) { return d.name; })
-	.style("fill-opacity", 1e-6);
-	*/
 	
 	
 	var rect = nodeEnter.append("rect")
@@ -142,7 +191,9 @@ function update(source) {
 	// Transition nodes to their new position.
 	var nodeUpdate = node.transition()
 	.duration(duration)
-	.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+	.attr("transform", function(d) { 
+		return "translate(" + d.y + "," + d.x + ")"; 
+	});
 	
 	//si on vient de cliquer le noeud ou si c'est une terminaison, on le selectionne
 	nodeUpdate.select("rect")
@@ -207,7 +258,12 @@ function update(source) {
 
 // Toggle children on click.
 function click(d) {
-	
+	 //var coords = d3.mouse(this);
+	/*svgCurrTranslate[0]+=d.x;
+	svgCurrTranslate[1]+=d.y;
+	svg.attr("transform", "translate(" + svgCurrTranslate + ")scale(" + svgCurrScale + ")");
+	*/
+	updateSVGPos(d);
 	// push pop paths
 	if(!d.children && !d._children){
 		if(d.selected){
@@ -217,7 +273,7 @@ function click(d) {
 		}
 	}
 	
-	console.log(completePaths);
+	//console.log(completePaths);
 	// select / unselect nodes
 	d.selected = !d.selected;
 	if(!d.selected) unselectChildren(d);
