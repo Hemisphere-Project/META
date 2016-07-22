@@ -2,7 +2,7 @@ var nodeWidth = 100;
 var nodeHeight = 30;
 var width = window.innerWidth*0.9,
 height = window.innerHeight*0.9;
-var initialScale = 1;
+var initialScale = 2;
 var screenCenter = {"x":width/2,"y":height/2};
 
 
