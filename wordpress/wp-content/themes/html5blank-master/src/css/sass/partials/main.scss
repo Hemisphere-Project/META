@@ -1,0 +1,68 @@
+.left-column{
+	padding-right: 143px;	
+	float : left;
+	
+}
+
+.right-column{
+	padding-right: 30px;
+	float : right;
+	margin-top: 65px;
+}
+
+
+.intro-title{
+	
+	font-family: "ReplicaFlairStd-Regular";
+	font-size: 31pt;
+	line-height:1;
+	margin-bottom:30px;
+	
+	.intro-title-line-1{
+		color: $flair-green;
+	}
+	.intro-title-line-2{
+		color: $text-color-white;
+	}
+}
+.intro-subtitle{
+	font-family: "ReplicaFlairStd-Italic";
+	font-size: 13pt;
+	color: $flair-green;
+	margin-bottom:30px;
+}
+
+
+.intro-box{
+	
+	border-left-width:4px;
+	border-left-color:$flair-green;
+	border-left-style:solid;
+	
+	margin-bottom:20px;
+	padding: 15px 30px;
+	
+
+	.title{
+		font-family: ReplicaFlairStd-Regular;
+		font-size: 16pt;
+	}
+	.text{
+	}
+	
+}
+
+.intro-box-black{
+	background: $text-color-black;
+	color: $text-color-white;
+}
+
+.intro-box-white{
+	background: $text-color-white;
+	color: $text-color-black;
+}
+	
+	
+	
+	
+	

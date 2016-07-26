@@ -9,10 +9,14 @@
 					$args = array( 'post_type' => 'intropage', 'posts_per_page' => 10 );
 					$loop = new WP_Query( $args );
 					while ( $loop->have_posts() ) : $loop->the_post();?>
-						<div class="col-1-2">
+						<div class="col-1-2 left-column">
 						<div class="intro-title">
-							<?php echo types_render_field( "title-line-1", array() ); ?>
-							<?php echo types_render_field( "title-line-2", array() ); ?>
+							<div class="intro-title-line-1">
+								<?php echo types_render_field( "title-line-1", array() ); ?>
+							</div>
+							<div class="intro-title-line-2">
+								<?php echo types_render_field( "title-line-2", array() ); ?>
+							</div>
 						</div>
 						<div class="intro-subtitle">
 							<?php echo types_render_field( "subtitle", array() ); ?>
@@ -21,12 +25,18 @@
 							<?php echo types_render_field( "into-text", array()); ?>
 						</div>
 					</div>
-					<div class="col-2-2">
-						<div class="intro-flair">
+					<div class="col-1-2 right-column">
+						<div class="intro-flair intro-box intro-box-black">
+							<div class="title">&#183LAIR</div>
+							<div class="text">
 							<?php echo types_render_field( "flair", array()); ?>
+							</div>
 						</div>
-						<div class="intro-credits">
-							<?php echo types_render_field( "credits", array()); ?>
+						<div class="intro-credits intro-box intro-box-white">
+							<div class="title">CREDITS</div>
+							<div class="text">
+								<?php echo types_render_field( "credits", array()); ?>
+							</div>
 						</div>
 					</div>
 					<?php endwhile; ?>
@@ -39,7 +49,7 @@
 					$args = array( 'post_type' => 'step', 'posts_per_page' => 10 );
 					$loop = new WP_Query( $args );
 					while ( $loop->have_posts() ) : $loop->the_post();?>
-					<div class="col-1-2">
+					<div class="col-1-2 ">
 						<div class="step-title">
 							<?php echo types_render_field( "title", array() ); ?>
 						</div>
@@ -50,7 +60,7 @@
 							<?php echo types_render_field( "text", array()); ?>
 						</div>
 					</div>
-					<div class="col-2-2">
+					<div class="col-2-2 ">
 						<?php echo types_render_field( "button-text", array()); ?>
 					</div>
 					<?php endwhile; ?>
