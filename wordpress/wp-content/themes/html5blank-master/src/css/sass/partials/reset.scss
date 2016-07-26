@@ -25,7 +25,7 @@ body {
   font-size: $font-size-base;
   line-height: $line-height-base;
   color: $text-color;
-  background-color: $body-bg;
+  @include linear-gradient(#43345E, #70345D);
 }
 
 img {
