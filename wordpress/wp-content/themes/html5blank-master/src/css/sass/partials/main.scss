@@ -70,6 +70,64 @@
 	color: $text-color-black;
 }
 
+
+
+
+.step-title{
+	
+	font-family: "ReplicaFlairStd-Regular";
+	font-size: 31pt;
+	line-height:1;
+	margin-bottom:30px;
+	color: $text-color-white;
+}
+
+.step-subtitle{
+	font-family: "ReplicaFlairStd-Italic";
+	font-size: 13pt;
+	color: $flair-green;
+	margin-bottom:30px;
+}
+
+.step-next-button{
+			border-left-width:4px;
+			border-left-color:$flair-green;
+			border-left-style:solid;
+			height:62px;
+			margin: 106px 76px;
+			background: $text-color-black;
+			
+			.text{
+				
+				color: $text-color-white;
+				position: absolute;
+				height: $button-height;
+				
+				font-family: "ReplicaFlairStd-Regular";
+				font-size: 15pt;
+				
+				margin: 15px 10px;
+				text-align: center;
+				width: 280px;
+			}
+			.icon{
+				background: #6EDD8F;
+				color: #03172B;
+				position: absolute;
+				height: 62px;
+				width: 62px;
+				right: 66px;
+				font-family: ReplicaFlairStd-Regular;
+				font-size: 24pt;
+				padding: 8px 22px;
+			}
+			.next-ico:after{
+				content:"\58";	
+			}
+			
+		}
+
+
 .planetary-agenda{
 	background: white;
 	color:$text-color-black;	

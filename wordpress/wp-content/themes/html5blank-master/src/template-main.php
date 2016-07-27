@@ -52,7 +52,7 @@
 						$args = array( 'post_type' => 'step', 'posts_per_page' => 10 );
 						$loop = new WP_Query( $args );
 						while ( $loop->have_posts() ) : $loop->the_post();?>
-						<div class="col-1-2 ">
+						<div class="col-1-2 left-column">
 							<div class="step-title">
 								<?php echo types_render_field( "title", array() ); ?>
 							</div>
@@ -63,8 +63,14 @@
 								<?php echo types_render_field( "text", array()); ?>
 							</div>
 						</div>
-						<div class="col-2-2 ">
-							<?php echo types_render_field( "button-text", array()); ?>
+						<div class="col-1-2 right-column">
+							<div class="step-next-button">
+								<span class="text">
+									<?php echo types_render_field( "button-text", array()); ?>
+								</span>
+								<span class="icon next-ico">
+								</span>
+							</div>
 						</div>
 						<?php endwhile; ?>
 					</div>
