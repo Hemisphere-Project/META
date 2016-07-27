@@ -530,7 +530,7 @@ input[type="search"] {
 .right-menu .buttons-group {
   height: 300px;
   position: absolute;
-  bottom: 60px;
+  bottom: -70px;
   width: 300px;
 }
 .right-menu .buttons-group .button {
