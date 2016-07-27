@@ -17,6 +17,9 @@
  * Grid
  */
 /**
+*Planetary Agenda
+ */
+/**
  * modules/mixins
  * ---
  */
@@ -187,7 +190,7 @@ input[type="search"] {
  * Alignment
  */
 .alignnone {
-  margin: 5px 15px 15px 0;
+  margin: 5px 0 15px 0;
 }
 
 .aligncenter {
@@ -197,12 +200,12 @@ input[type="search"] {
 
 .alignright {
   float: right;
-  margin: 5px 0 15px 15px;
+  margin: 5px 0 15px 0;
 }
 
 .alignleft {
   float: left;
-  margin: 5px 15px 15px 0;
+  margin: 5px 0 15px 0;
 }
 
 /**
@@ -255,8 +258,8 @@ input[type="search"] {
  * ---
  */
 .wrapper {
-  max-width: 1280px;
-  padding: 0 15px;
+  max-width: 100%;
+  padding: 0 0;
   margin: 0 auto;
   position: relative;
 }
@@ -349,6 +352,13 @@ input[type="search"] {
     page-break-after: avoid;
   }
 }
+.subwrap {
+  width: 1280px;
+  padding: 0 15px;
+  margin: 0 auto;
+  position: relative;
+}
+
 .left-column {
   padding-right: 143px;
   float: left;
@@ -400,6 +410,95 @@ input[type="search"] {
 .intro-box-white {
   background: #FFF;
   color: #03172B;
+}
+
+.planetary-agenda {
+  background: white;
+  color: #03172B;
+}
+
+.planetary-agenda-container {
+  position: absolute;
+}
+
+.right-menu {
+  float: right;
+  width: 300px;
+  height: 100%;
+  background: #43345E;
+  background: -webkit-linear-gradient(-90deg, #43345E, #70345D);
+  background: linear-gradient(180deg, #43345E, #70345D);
+  color: #FFF;
+}
+.right-menu .title {
+  color: #6EDD8F;
+  width: 100%;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  font-family: ReplicaFlairStd-Regular;
+  font-size: 16pt;
+}
+.right-menu .selected-paths-section {
+  height: 300px;
+}
+.right-menu .selected-paths-section .path {
+  border-left-width: 4px;
+  border-left-color: #6EDD8F;
+  border-left-style: solid;
+  padding: 0px 0px 0px 15px;
+  margin: 0px 0px 10px 0px;
+}
+.right-menu .selected-paths-section .path .red {
+  color: #E64047;
+}
+.right-menu .selected-paths-section .path .blue {
+  color: #4AA6E7;
+}
+.right-menu .selected-paths-section .path .yellow {
+  color: #FEBC59;
+}
+.right-menu .buttons-group {
+  height: 300px;
+  position: absolute;
+  bottom: 60px;
+  width: 300px;
+}
+.right-menu .buttons-group .button {
+  border-left-width: 4px;
+  border-left-color: #6EDD8F;
+  border-left-style: solid;
+  height: 36px;
+  margin: 10px 20px;
+  background: #03172B;
+}
+.right-menu .buttons-group .button .text {
+  color: #FFF;
+  position: absolute;
+  height: 36px;
+  margin: 10px 10px;
+  text-align: center;
+  width: 214px;
+}
+.right-menu .buttons-group .button .icon {
+  background: #6EDD8F;
+  color: #03172B;
+  position: absolute;
+  height: 36px;
+  width: 36px;
+  right: 10px;
+  font-family: ReplicaFlairStd-Regular;
+  font-size: 16pt;
+  padding: 5px 12px;
+}
+.right-menu .buttons-group .button .generate-ico:after {
+  content: "\58";
+}
+.right-menu .buttons-group .button .reset-ico:after {
+  content: "\58";
+}
+.right-menu .buttons-group .button .validate-ico:after {
+  content: "\58";
 }
 
 /*# sourceMappingURL=style.css.map */

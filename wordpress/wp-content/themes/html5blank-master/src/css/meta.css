@@ -1,0 +1,26 @@
+/*body{
+	overflow:hidden;	
+}*/
+
+/*svg g{
+	-webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;	
+}*/
+
+.node text{
+  /*fill: #fff;*/
+  cursor: pointer;
+}
+.node rect{
+	fill:white;
+	fill-opacity:1;	
+}
+
+.node {
+  font: 5px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke-width: 1.5px;
+}

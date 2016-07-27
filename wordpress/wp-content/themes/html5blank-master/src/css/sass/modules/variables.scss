@@ -29,12 +29,23 @@ $text-color-black: #03172B;
  * Grid
  */
 
-$wrapper-width: 1280px;
+$wrapper-width: 100%;
+$sub-wrapper-width : 1280px;
 
 
 $padding-horizontal-base: 5px;
 $padding-vertical-base: 5px;
 $margin-horizontal-base: 5px;
 $margin-vertical-base: 5px;
-$margin-horizontal-large: 15px;
+$margin-horizontal-large: 0;//15px;
 $margin-vertical-large: 15px;
+
+
+/**
+*Planetary Agenda
+ */
+ 
+$planetary-agenda-menu-width: 300px;
+
+
+$button-height: 36px;

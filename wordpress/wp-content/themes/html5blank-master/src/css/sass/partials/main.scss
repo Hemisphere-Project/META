@@ -1,3 +1,11 @@
+.subwrap{
+	width: $sub-wrapper-width;
+	padding: 0 15px;
+	margin: 0 auto;
+	position: relative;
+}
+
+
 .left-column{
 	padding-right: 143px;	
 	float : left;
@@ -60,6 +68,121 @@
 .intro-box-white{
 	background: $text-color-white;
 	color: $text-color-black;
+}
+
+.planetary-agenda{
+	background: white;
+	color:$text-color-black;	
+}
+
+.planetary-agenda-container{
+	position:absolute;
+}
+
+.right-menu{
+	float:right;
+	width:$planetary-agenda-menu-width;	
+	height:100%;
+	
+	@include linear-gradient(#43345E, #70345D);
+	color: $text-color-white;
+	
+	.title{
+		color:	$flair-green;
+		width: 100%;
+		text-align: center;
+		margin-top: 60px;
+		margin-bottom: 60px;
+		font-family: ReplicaFlairStd-Regular;
+		font-size: 16pt;
+	}
+	.selected-paths-section{
+		height:300px;	
+		
+		.path{
+			
+			border-left-width:4px;
+			border-left-color:$flair-green;
+			border-left-style:solid;
+			
+			padding: 0px 0px 0px 15px;
+			margin: 0px 0px 10px 0px;
+		
+			.axe{
+			}
+			.axe-prefix{
+			}
+			.subcategory{
+				
+			}
+			.subcategory-prefix{
+			}
+			
+			.red{
+				color:#E64047;
+			}
+			.blue{
+				color:#4AA6E7;
+			}
+			.yellow{
+				color:#FEBC59;
+			}
+		}
+		
+		
+		
+	}
+	
+	.buttons-group{
+		height:$planetary-agenda-menu-width;
+		position: absolute;
+		bottom:60px;
+		width:$planetary-agenda-menu-width;
+		
+		.button{
+			border-left-width:4px;
+			border-left-color:$flair-green;
+			border-left-style:solid;
+			height:$button-height;
+			margin: 10px 20px;
+			background: $text-color-black;
+			
+			.text{
+				
+				color: $text-color-white;
+				position: absolute;
+				height: $button-height;
+				
+				margin: 10px 10px;
+				text-align: center;
+				width: $planetary-agenda-menu-width - 86px;
+			}
+			.icon{
+				background: $flair-green;
+				color: $text-color-black;
+				position: absolute;
+				height: $button-height;
+				width:$button-height;
+				right: 10px;
+				
+				font-family: ReplicaFlairStd-Regular;
+				font-size: 16pt;
+				padding: 5px 12px;
+			}
+			
+			.generate-ico:after{
+				content:"\58";	
+			}
+			
+			.reset-ico:after{
+				content:"\58";
+			}
+			
+			.validate-ico:after{
+				content:"\58";
+			}
+		}
+	}
 }
 	
 	
