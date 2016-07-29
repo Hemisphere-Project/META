@@ -148,9 +148,6 @@ function html5blank_conditional_scripts()
         wp_register_script('metaPath', get_template_directory_uri() . '/js/metaPath.js', array('jquery','fullPage','d3'), '1.0.0');
         wp_enqueue_script('metaPath');
         
-        wp_register_script('randombot', get_template_directory_uri() . '/js/RandomBot.js', array('jquery','fullPage','d3'), '1.0.0');
-        wp_enqueue_script('randombot');
-        
         wp_register_script('meta', get_template_directory_uri() . '/js/meta.js', array('jquery','fullPage','d3'), '1.0.0');
         wp_enqueue_script('meta');
     }

@@ -1,11 +1,13 @@
 $(document).ready(function() {
 
-var templateUrl = location.protocol+'//'+location.host+location.pathname;		
 		
-var nodeWidth = 100;
+/*********************************************************************/
+/**************************** GLOBALS ********************************/
+/*********************************************************************/
+
+		
+var nodeWidth = 200;
 var nodeHeight = 30;
-//var width = window.innerWidth*0.9,
-//height = window.innerHeight*0.9;
 var width = (window.innerWidth-300),
 height = window.innerHeight;
 
@@ -21,11 +23,16 @@ root;
 
 var colors = ["black","#FEBC59","#E64047","#4AA6E7"];
 
-/* PATH LIST */
+
+/*********************************************************************/
+/********************** COMPLETE PATH CLASS **************************/
+/*********************************************************************/
+
 
 var completePaths = [];
+completePaths.maxLength = 3;
 completePaths.addPath = function(d){
-	completePaths.push(new MetaPath(d,root));	
+	completePaths.push(new MetaPath(d));	
 }
 completePaths.removePath = function(d){
 	for(var k=0;k<completePaths.length;k++){
@@ -41,45 +48,31 @@ completePaths.updateDisplay = function(){
 }
 
 
-/* */
+/*********************************************************************/
+/**************************** D3JS TREE*******************************/
+/*********************************************************************/
+
 
 
 var tree = d3.layout.tree()
-//.size([height, width ]);
 .nodeSize([nodeHeight,nodeWidth]);
 
 var diagonal = d3.svg.diagonal()
 .projection(function(d) { return [d.y, d.x]; });
 
-function elbow(d, i) {
-	return "M" + d.source.y + "," + d.source.x
-	+ "V" + d.target.x + "H" + d.target.y;
-}
 
 
-/* SVG */
+
+/*********************************************************************/
+/****************************** SVG **********************************/
+/*********************************************************************/
+
 
 var svg = d3.select(".planetary-agenda-container").append("svg")
 .attr("width", width)
 .attr("height", height)
-//.call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom))
 .append("g")
 .attr("transform", "translate("+screenCenter.x+","+screenCenter.y+")scale("+initialScale+")")
-
-
-d3.select("svg").on("click", function() {
-		/*var coords = d3.mouse(this);
-		console.log(coords);
-		//if(d3.event.target.nodeName != "svg"){
-			var targetX = 2*screenCenter.x - coords[0],
-				targetY = 2*screenCenter.y - coords[1];
-				console.log(coords+"  "+targetX+"  "+targetY);
-				svg.attr("transform", "translate("+targetX+","+targetY+")scale(" + svgCurrScale + ")");
-				//svgCurrTranslate = [targetX,targetY];
-				//zoom.translate(svgCurrTranslate);
-		//}*/
-		
- });
 
 
 var svgCurrTranslate = [width/2,height/2];
@@ -100,8 +93,6 @@ function updateSVGPos(node){
 		svgCurrTranslate[0] = screenCenter.x - svgCurrTranslateOffset[0];
 		svgCurrTranslate[1] = screenCenter.y - svgCurrTranslateOffset[1];
 		
-		//svg.attr("transform", "translate("+svgCurrTranslate[0]+","+svgCurrTranslate[1]+")scale(" + svgCurrScale + ")");
-		
 		svg.transition()
 		.duration(duration)
 		.attr("transform", function() { 
@@ -114,7 +105,11 @@ function updateSVGPos(node){
 		
 }
 
-/* ZOOM */
+
+/*********************************************************************/
+/**************************** ZOOM ***********************************/
+/*********************************************************************/
+
 
 var zoom = d3.behavior.zoom();
 d3.select("svg").call(zoom.scaleExtent([1, 2]).on("zoom", onZoom));
@@ -123,20 +118,20 @@ zoom.scale(initialScale);
 zoom.translate([width/2, height/2]);
 
 function onZoom() {
-	//console.log(d3.event.translate);
 	svgCurrTranslate = d3.event.translate;
 	svgCurrScale = d3.event.scale;
 	svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 }
 
-function onMouseClick(d,i){
-	var mousePos = d3.mouse(svg);
-	//console.log(mousePos);	
-	//svg.attr("transform", "translate(" + mousePos[0] +","+mousePos[1] + ")scale(" + zoom.scale() + ")");
-	
-}
 
 
+
+/*********************************************************************/
+/**************************** JSON LOAD ******************************/
+/*********************************************************************/
+
+
+var templateUrl = location.protocol+'//'+location.host+location.pathname;		
 
 d3.json(templateUrl+"/wp-content/uploads/planetaryagenda_cd.json", function(error, data) {
 		if (error) throw error;
@@ -181,8 +176,10 @@ function update(source) {
 	// Enter any new nodes at the parent's previous position.
 	var nodeEnter = node.enter().append("g")
 	.attr("class", "node")
-	.attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-	.on("click", click);
+	.attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; });
+	//.on("click", click);
+	
+	 d3.selectAll(".node").on('click',click);
 	
 	
 	
@@ -201,9 +198,6 @@ function update(source) {
 	.attr("y", function(d) {return this.parentNode.getBBox().y - 3;})
 	.attr("width", function(d) {return this.parentNode.getBBox().width + 6;})
 	.attr("height", function(d) {return this.parentNode.getBBox().height + 6;})
-	
-	
-	
 	
 	
 	
@@ -275,13 +269,12 @@ function update(source) {
 	});
 }
 
+var nodeClickEnabled = true;
 // Toggle children on click.
 function click(d) {
-	 //var coords = d3.mouse(this);
-	/*svgCurrTranslate[0]+=d.x;
-	svgCurrTranslate[1]+=d.y;
-	svg.attr("transform", "translate(" + svgCurrTranslate + ")scale(" + svgCurrScale + ")");
-	*/
+	
+	if(!nodeClickEnabled) return;
+	
 	updateSVGPos(d);
 	// push pop paths
 	if(!d.children && !d._children){
@@ -290,7 +283,7 @@ function click(d) {
 		}else{
 			completePaths.addPath(d);
 		}
-		completePaths.updateDisplay();
+		
 	}
 	
 	//console.log(completePaths);
@@ -308,6 +301,7 @@ function click(d) {
 		d._children = null;
 	}
 	update(d);
+	completePaths.updateDisplay();
 }
 
 
@@ -364,7 +358,10 @@ function unselectChildren(d){
 
 
 
-/* UX */
+/*********************************************************************/
+/**************************** UX *************************************/
+/*********************************************************************/
+
 
 $(".step-next-button").on("click", function(event){
 	console.log(".step-next-button");	
@@ -385,29 +382,43 @@ $("#validate-btn").on("click", function(event){
 });
 
 
+
+
+/*********************************************************************/
+/**************************** RandomBot CLASS*************************/
+/*********************************************************************/
+
 function RandomBot(){
 	this.maxSelectedPath = 3;
-	this.selectedPaths = []	;
 	this.intervalHandler = null;
-	this.selectionPeriod = 2000;
+	this.selectionPeriod = 1500;
 	
 	this.currentSelection = null;
 }
 
-
-//RandomBot Class
 RandomBot.prototype.start = function(){
+	
+	
+	// diable node click
+	nodeClickEnabled = false;
+	
 	var self = this;
 	this.intervalHandler = setInterval(function(){
-		self.randomSelect();;
+		if(completePaths.length < completePaths.maxLength)
+			self.randomSelect();
+		else
+			self.stop();
 	},this.selectionPeriod);	
 }
 
 RandomBot.prototype.stop = function(){
 	clearInterval(this.intervalHandler);
+	this.currentSelection = null;
+	
+	//enable node click
+	nodeClickEnabled = true;
 }
 
-// un peu plus complexe que ça // !!!! DEBUG
 RandomBot.prototype.randomSelect = function(){
 	console.log("random selection");
 	
@@ -423,8 +434,6 @@ RandomBot.prototype.randomSelect = function(){
 		
 	}
 	
-	
-	
 	if(!this.currentSelection){
 		selectNext(root)
 	}else{
@@ -432,10 +441,8 @@ RandomBot.prototype.randomSelect = function(){
 	}
 	update(this.currentSelection);
 	
-	
-	
-	
 }
+
 RandomBot.prototype.selectNode = function(d){
 	this.currentSelection = d;
 
