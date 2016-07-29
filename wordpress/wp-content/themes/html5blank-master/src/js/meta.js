@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+var templateUrl = location.protocol+'//'+location.host+location.pathname;		
+		
 var nodeWidth = 100;
 var nodeHeight = 30;
 //var width = window.innerWidth*0.9,
@@ -10,6 +12,8 @@ height = window.innerHeight;
 var initialScale = 2;
 var screenCenter = {"x":width/2,"y":height/2};
 
+
+var randBot;
 
 var i = 0,
 duration = 750, 
@@ -134,7 +138,7 @@ function onMouseClick(d,i){
 
 
 
-d3.json("../wp-content/uploads/planetaryagenda_cd.json", function(error, data) {
+d3.json(templateUrl+"/wp-content/uploads/planetaryagenda_cd.json", function(error, data) {
 		if (error) throw error;
 		
 		
@@ -151,6 +155,8 @@ d3.json("../wp-content/uploads/planetaryagenda_cd.json", function(error, data) {
 		
 		
 
+		 randBot = new RandomBot(root);
+		
 		
 		//root.children.forEach(collapse);
 		collapse(root);
@@ -287,7 +293,7 @@ function click(d) {
 		completePaths.updateDisplay();
 	}
 	
-	console.log(completePaths);
+	//console.log(completePaths);
 	// select / unselect nodes
 	d.selected = !d.selected;
 	if(!d.selected) unselectChildren(d);
@@ -355,6 +361,107 @@ function unselectChildren(d){
 		d.children.forEach(unselectChildren);
 	}	
 }
+
+
+
+/* UX */
+
+$(".step-next-button").on("click", function(event){
+	console.log(".step-next-button");	
+});
+
+$("#generate-btn").on("click", function(event){
+	console.log("#generate-btn");	
+	randBot.start();
+});
+
+$("#reset-btn").on("click", function(event){
+	console.log("#reset-btn");
+	randBot.stop();	
+});
+
+$("#validate-btn").on("click", function(event){
+	console.log("#validate-btn");	
+});
+
+
+function RandomBot(){
+	this.maxSelectedPath = 3;
+	this.selectedPaths = []	;
+	this.intervalHandler = null;
+	this.selectionPeriod = 2000;
+	
+	this.currentSelection = null;
+}
+
+
+//RandomBot Class
+RandomBot.prototype.start = function(){
+	var self = this;
+	this.intervalHandler = setInterval(function(){
+		self.randomSelect();;
+	},this.selectionPeriod);	
+}
+
+RandomBot.prototype.stop = function(){
+	clearInterval(this.intervalHandler);
+}
+
+// un peu plus complexe que ça // !!!! DEBUG
+RandomBot.prototype.randomSelect = function(){
+	console.log("random selection");
+	
+	var self = this;
+	function selectNext(node){
+		if(node.selected && node.children){// est selectionné et a des enfants
+			selectNext(node.children[Math.floor(Math.random()*node.children.length)]);
+		}else if(node.selected && !node.children){ // est selectionné et n'as pas d'enfant
+			selectNext(root);
+		}else{
+			self.selectNode(node);	
+		}
+		
+	}
+	
+	
+	
+	if(!this.currentSelection){
+		selectNext(root)
+	}else{
+		selectNext(this.currentSelection);	
+	}
+	update(this.currentSelection);
+	
+	
+	
+	
+}
+RandomBot.prototype.selectNode = function(d){
+	this.currentSelection = d;
+
+	updateSVGPos(d);
+	
+	// push pop paths
+	if(!d.children && !d._children){
+		if(d.selected){
+			completePaths.removePath(d);
+		}else{
+			completePaths.addPath(d);
+		}
+		completePaths.updateDisplay();
+	}
+	
+	
+	d.selected = true;
+	if(d._children){
+		d.children = d._children;
+		d._children = null;
+	}
+	
+}
+
+
+
 
 });
 
