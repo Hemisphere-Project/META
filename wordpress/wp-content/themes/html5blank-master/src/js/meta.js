@@ -31,9 +31,11 @@ var colors = ["black","#FEBC59","#E64047","#4AA6E7"];
 
 var completePaths = [];
 completePaths.maxLength = 3;
+
 completePaths.addPath = function(d){
 	completePaths.push(new MetaPath(d));	
 }
+
 completePaths.removePath = function(d){
 	for(var k=0;k<completePaths.length;k++){
 		if(completePaths[k].lastNode === d) return completePaths.splice(k,1);	
@@ -43,7 +45,7 @@ completePaths.removePath = function(d){
 completePaths.updateDisplay = function(){
 	$(".selected-paths-section").empty();
 	for(var k=0;k<completePaths.length;k++){
-		$(".selected-paths-section").append("<div class='path' style='border-color:"+colors[completePaths[k].gp]+"'><div class='axe'><span class='axe-prefix' style='color:"+colors[completePaths[k].gp]+"'>AXE: </span><span>"+completePaths[k].axe+"<span></div><div class='subcategory'><span class='category-prefix' style='color:"+colors[completePaths[k].gp]+"'>SUBCATEGORY: </span><span>"+completePaths[k].subcategory+"</span></div></div>");
+		$(".selected-paths-section").append("<div id='"+completePaths[k].lastNode.name+"' class='path' style='border-color:"+colors[completePaths[k].gp]+"'><div class='axe'><span class='axe-prefix' style='color:"+colors[completePaths[k].gp]+"'>AXE: </span><span>"+completePaths[k].axe+"<span></div><div class='subcategory'><span class='category-prefix' style='color:"+colors[completePaths[k].gp]+"'>SUBCATEGORY: </span><span>"+completePaths[k].subcategory+"</span></div></div>");
 	}
 }
 
@@ -273,7 +275,12 @@ var nodeClickEnabled = true;
 // Toggle children on click.
 function click(d) {
 	
+	// disable mouse click during robot dance
 	if(!nodeClickEnabled) return;
+	
+	// disable mouse click if completepath array is full ! A changer
+	//if(completePaths.length >= completePaths.maxLength) return;
+	if(!d.children && !d._children && completePaths.length >= completePaths.maxLength && !d.selected) return;
 	
 	updateSVGPos(d);
 	// push pop paths
@@ -381,11 +388,22 @@ $("#validate-btn").on("click", function(event){
 	console.log("#validate-btn");	
 });
 
+$('body').on('click', '.path', function(event) {
+		console.log(event.currentTarget.id);
+		for(var k = 0; k<completePaths.length; k++)
+			if(completePaths[k].lastNode.name === event.currentTarget.id){
+				completePaths[k].lastNode.selected = false;
+				update(completePaths[k].lastNode);
+				completePaths.splice(k,1); 
+			}
+			
+		completePaths.updateDisplay();
+});
 
 
 
 /*********************************************************************/
-/**************************** RandomBot CLASS*************************/
+/**************************** RandomBot CLASS ************************/
 /*********************************************************************/
 
 function RandomBot(){
