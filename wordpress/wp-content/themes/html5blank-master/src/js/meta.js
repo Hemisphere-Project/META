@@ -6,7 +6,7 @@ $(document).ready(function() {
 /*********************************************************************/
 
 		
-var nodeWidth = 200;
+var nodeWidth = 300;
 var nodeHeight = 30;
 var width = (window.innerWidth-300),
 height = window.innerHeight;
@@ -45,7 +45,7 @@ completePaths.removePath = function(d){
 completePaths.updateDisplay = function(){
 	$(".selected-paths-section").empty();
 	for(var k=0;k<completePaths.length;k++){
-		$(".selected-paths-section").append("<div id='"+completePaths[k].lastNode.name+"' class='path' style='border-color:"+colors[completePaths[k].gp]+"'><div class='axe'><span class='axe-prefix' style='color:"+colors[completePaths[k].gp]+"'>AXE: </span><span>"+completePaths[k].axe+"<span></div><div class='subcategory'><span class='category-prefix' style='color:"+colors[completePaths[k].gp]+"'>SUBCATEGORY: </span><span>"+completePaths[k].subcategory+"</span></div></div>");
+		$(".selected-paths-section").append("<div id='"+completePaths[k].lastNode.name+"' class='path' style='border-color:"+colors[completePaths[k].gp]+"'><div class='close-btn'></div><div class='axe'><span class='axe-prefix' style='color:"+colors[completePaths[k].gp]+"'>AXE: </span><span>"+completePaths[k].axe+"<span></div><div class='subcategory'><span class='category-prefix' style='color:"+colors[completePaths[k].gp]+"'>SUBCATEGORY: </span><span>"+completePaths[k].subcategory+"</span></div></div>");
 	}
 }
 
@@ -372,6 +372,7 @@ function unselectChildren(d){
 
 $(".step-next-button").on("click", function(event){
 	console.log(".step-next-button");	
+	$.fn.fullpage.moveTo("meta-workshop",2);
 });
 
 $("#generate-btn").on("click", function(event){
@@ -386,12 +387,13 @@ $("#reset-btn").on("click", function(event){
 
 $("#validate-btn").on("click", function(event){
 	console.log("#validate-btn");	
+	$.fn.fullpage.moveTo("meta-workshop",3);
 });
 
-$('body').on('click', '.path', function(event) {
-		console.log(event.currentTarget.id);
+$('body').on('click', '.path .close-btn', function(event) {
+		console.log(event.currentTarget.parentNode.id);
 		for(var k = 0; k<completePaths.length; k++)
-			if(completePaths[k].lastNode.name === event.currentTarget.id){
+			if(completePaths[k].lastNode.name === event.currentTarget.parentNode.id){
 				completePaths[k].lastNode.selected = false;
 				update(completePaths[k].lastNode);
 				completePaths.splice(k,1); 
@@ -410,15 +412,23 @@ function RandomBot(){
 	this.maxSelectedPath = 3;
 	this.intervalHandler = null;
 	this.selectionPeriod = 1500;
+	this.isRunning = false;
 	
 	this.currentSelection = null;
 }
 
 RandomBot.prototype.start = function(){
 	
+	if(this.isRunning) return;
 	
+	this.isRunning = true;
 	// diable node click
 	nodeClickEnabled = false;
+	
+	if(completePaths.length < completePaths.maxLength)
+		this.randomSelect();
+	else
+		self.stop();
 	
 	var self = this;
 	this.intervalHandler = setInterval(function(){
@@ -431,10 +441,13 @@ RandomBot.prototype.start = function(){
 
 RandomBot.prototype.stop = function(){
 	clearInterval(this.intervalHandler);
+	
 	this.currentSelection = null;
 	
 	//enable node click
 	nodeClickEnabled = true;
+	
+	this.isRunning = false;
 }
 
 RandomBot.prototype.randomSelect = function(){

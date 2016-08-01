@@ -1,11 +1,17 @@
 <?php /* Template Name: Main Page */ get_header(); ?>
 
 	<main role="main">
+
 		<div id="fullpage">
 			<div class="section">
 				<!-- section -->
 				<section class="slide">
+					<div class="borderinfo-container">
+						<div id="bi-flairedu-1" class="borderinfo-element">FLAIR<br>EDUCATION</div>
+					</div>
+				
 					<div class="subwrap">
+					
 						<?php 
 						$args = array( 'post_type' => 'intropage', 'posts_per_page' => 10 );
 						$loop = new WP_Query( $args );
@@ -47,6 +53,10 @@
 				<!-- /section -->
 				<!-- section -->
 				<section class="slide">
+					<div class="borderinfo-container">
+						<div id="bi-meta-2" class="borderinfo-element">META<br>WORKSHOP</div>
+						<div id="bi-flairedu-2" class="borderinfo-element">FLAIR<br>EDUCATION</div>
+					</div>
 					<div class="subwrap">
 						<?php 
 						$args = array( 'post_type' => 'step', 'posts_per_page' => 10 );
@@ -64,11 +74,11 @@
 							</div>
 						</div>
 						<div class="col-1-2 right-column">
-							<div class="step-next-button">
-								<span class="text">
+							<div class="step-next-button simple-button">
+								<span class="text sb-label">
 									<?php echo types_render_field( "button-text", array()); ?>
 								</span>
-								<span class="icon next-ico">
+								<span class="icon next-ico sb-ico">
 								</span>
 							</div>
 						</div>
@@ -78,6 +88,12 @@
 				<!-- /section -->
 				<!-- section -->
 				<section class="slide planetary-agenda">
+					<div class="borderinfo-container">
+						<div id="bi-meta-3" class="borderinfo-element">META<br>WORKSHOP</div>
+						<div id="bi-flairedu-3" class="borderinfo-element">FLAIR<br>EDUCATION</div>
+						<div id="bi-step-3" class="borderinfo-element">STEP<br>-01-</div>
+						<div id="bi-title-3" class="borderinfo-element">SOCIO-POLITICAL CONTEXT GENERATION</div>
+					</div>
 					<div class="planetary-agenda-container">
 					</div>
 					<div class="right-menu">
@@ -91,25 +107,25 @@
 							<div class="selected-paths-section">
 							</div>
 							<div class="buttons-group">
-								<div id="generate-btn" class="button">
-									<span class="text">
+								<div id="generate-btn" class="button simple-button">
+									<span class="text sb-label">
 										<?php echo types_render_field( "generate-button", array() ); ?>
 									</span>
-									<span class="icon generate-ico">
+									<span class="icon generate-ico sb-ico">
 									</span>
 								</div>
-								<div id="reset-btn" class="button">
-									<span class="text">
+								<div id="reset-btn" class="button simple-button">
+									<span class="text sb-label">
 										<?php echo types_render_field( "reset-button", array()); ?>
 									</span>
-									<span class="icon reset-ico">
+									<span class="icon reset-ico sb-ico">
 									</span>
 								</div>
-								<div id="validate-btn" class="button">
-									<span class="text">
+								<div id="validate-btn" class="button simple-button">
+									<span class="text sb-label">
 										<?php echo types_render_field( "ok-button", array()); ?>
 									</span>
-									<span class="icon validate-ico">
+									<span class="icon validate-ico sb-ico">
 									</span>
 								</div>
 							</div>
@@ -119,6 +135,11 @@
 				<!-- /section -->
 				<!-- section -->
 				<section class="slide">
+					<div class="borderinfo-container">
+						<div id="bi-meta-4" class="borderinfo-element">META<br>WORKSHOP</div>
+						<div id="bi-flairedu-4" class="borderinfo-element">FLAIR<br>EDUCATION</div>
+						<div id="bi-step-4" class="borderinfo-element">STEP<br>-01-</div>
+					</div>
 					<div class="subwrap">
 						<?php 
 						$args = array( 'post_type' => 'summary', 'posts_per_page' => 10 );

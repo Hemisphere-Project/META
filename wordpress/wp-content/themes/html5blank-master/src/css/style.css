@@ -352,11 +352,127 @@ input[type="search"] {
     page-break-after: avoid;
   }
 }
+* {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */
+  cursor: default;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+/* override fullPage bullet nav */
+.fp-slidesNav {
+  margin-left: 0px !important;
+}
+.fp-slidesNav li:nth-child(0n+3), .fp-slidesNav li:nth-child(0n+4) {
+  visibility: hidden;
+}
+
+.borderinfo-container {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  color: #FFF;
+  font-family: "ReplicaFlairStd-Regular";
+  font-size: 9pt;
+}
+.borderinfo-container .borderinfo-element {
+  z-index: 1000;
+  position: absolute;
+}
+.borderinfo-container #bi-flairedu-1 {
+  top: 30px;
+  right: 25px;
+}
+.borderinfo-container #bi-meta-2 {
+  top: 30px;
+  left: 25px;
+}
+.borderinfo-container #bi-flairedu-2 {
+  top: 30px;
+  right: 25px;
+}
+.borderinfo-container #bi-meta-3 {
+  color: #03172B;
+  top: 30px;
+  left: 25px;
+}
+.borderinfo-container #bi-flairedu-3 {
+  color: #03172B;
+  bottom: 30px;
+  left: 25px;
+}
+.borderinfo-container #bi-step-3 {
+  color: #03172B;
+  top: 50%;
+  left: 25px;
+  text-align: center;
+}
+.borderinfo-container #bi-title-3 {
+  color: #03172B;
+  top: 30px;
+  left: calc(50% - 150px);
+  margin-left: -120px;
+  text-align: center;
+}
+.borderinfo-container #bi-meta-4 {
+  top: 30px;
+  left: 25px;
+}
+.borderinfo-container #bi-flairedu-4 {
+  top: 30px;
+  right: 25px;
+}
+.borderinfo-container #bi-step-4 {
+  top: 50%;
+  left: 25px;
+  text-align: center;
+}
+
 .subwrap {
   width: 1024px;
   padding: 0 15px;
   margin: 0 auto;
   position: relative;
+}
+
+.simple-button {
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.simple-button .sb-label {
+  transition: all 0.2s ease-out;
+  color: #FFF;
+}
+.simple-button .sb-ico {
+  transition: all 0.2s ease-out;
+  background: #6EDD8F;
+  color: #03172B;
+}
+
+.simple-button:hover {
+  border-left-color: #75FF9E !important;
+}
+.simple-button:hover .sb-ico {
+  background: #75FF9E !important;
+  color: #FFF !important;
+}
+
+.simple-button:active {
+  border-left-color: #75FF9E !important;
+}
+.simple-button:active .sb-ico {
+  background: #75FF9E !important;
+  color: #03172B !important;
 }
 
 .left-column {
@@ -494,8 +610,30 @@ input[type="search"] {
   border-left-width: 4px;
   border-left-color: #6EDD8F;
   border-left-style: solid;
-  padding: 0px 0px 0px 15px;
+  padding: 0px 30px 0px 15px;
   margin: 0px 0px 10px 0px;
+}
+.right-menu .selected-paths-section .path .close-btn {
+  float: right;
+  background: #6EDD8F;
+  color: #03172B;
+  width: 20px;
+  height: 20px;
+  line-height: 100%;
+  font-family: ReplicaFlairStd-Regular;
+  font-size: 11pt;
+  padding: 2px 0 0px 7px;
+  margin: 0 -30px 0 0;
+}
+.right-menu .selected-paths-section .path .close-btn:hover {
+  background: #75FF9E;
+  color: #FFF;
+}
+.right-menu .selected-paths-section .path .close-btn:active {
+  background: #75FF9E;
+}
+.right-menu .selected-paths-section .path .close-btn:after {
+  content: "\78";
 }
 .right-menu .selected-paths-section .path .red {
   color: #E64047;

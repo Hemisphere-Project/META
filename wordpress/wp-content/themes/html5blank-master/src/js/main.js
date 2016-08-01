@@ -4,7 +4,7 @@ $(document).ready(function() {
         //Navigation
         menu: '#menu',
         lockAnchors: false,
-        anchors:['firstPage', 'secondPage'],
+        anchors:['meta-workshop'],
         navigation: false,
         navigationPosition: 'right',
         navigationTooltips: ['firstSlide', 'secondSlide'],
@@ -57,6 +57,13 @@ $(document).ready(function() {
         afterRender: function(){},
         afterResize: function(){},
         afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
-        onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+        onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
+        	console.log(nextSlideIndex);
+        	if(nextSlideIndex == 2 || nextSlideIndex == 3){
+        		$(".fp-slidesNav").addClass("hidden");
+        	}else{
+        		$(".fp-slidesNav").removeClass("hidden");
+        	}	
+        }
     });
 });

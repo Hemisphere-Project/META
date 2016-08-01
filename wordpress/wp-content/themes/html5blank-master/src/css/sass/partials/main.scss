@@ -1,8 +1,145 @@
+*{
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+	user-select: none;          /* Likely future */   
+	cursor: default; 	
+}
+
+
+
+
+.hidden{
+	visibility:hidden;
+}
+
+/* override fullPage bullet nav */
+
+.fp-slidesNav{
+	margin-left: 0px !important;	
+	li:nth-child(0n+3),li:nth-child(0n+4){	
+		visibility:hidden;
+	}
+}
+
+
+.borderinfo-container{
+	
+	position:absolute;
+	top:0;
+	width:100vw;
+	height:100vh;
+	color:$text-color-white;
+	font-family: "ReplicaFlairStd-Regular";
+	font-size: 9pt;
+	
+	.borderinfo-element{
+		z-index: 1000;
+		position:absolute;
+	}
+	
+	#bi-flairedu-1{
+		top:$info-v-margin;
+		right:$info-h-margin;
+	}
+	
+	#bi-meta-2{
+		top:$info-v-margin;
+		left:$info-h-margin;
+	}
+	#bi-flairedu-2{
+		top:$info-v-margin;
+		right:$info-h-margin;
+	}
+	
+	#bi-meta-3{
+		color:$text-color-black;
+		top:$info-v-margin;
+		left:$info-h-margin;
+	}
+	#bi-flairedu-3{
+		color:$text-color-black;
+		bottom:$info-v-margin;
+		left:$info-h-margin;
+	}
+	#bi-step-3{
+		color:$text-color-black;
+		top:50%;
+		left:$info-h-margin;
+		text-align:center;
+	}
+	#bi-title-3{
+		color:$text-color-black;
+		top:$info-v-margin;
+		left:calc(50% - #{$planetary-agenda-menu-width/2});
+		margin-left:-120px;
+		text-align:center;
+	}
+	
+	#bi-meta-4{
+		top:$info-v-margin;
+		left:$info-h-margin;
+	}
+	#bi-flairedu-4{
+		top:$info-v-margin;
+		right:$info-h-margin;
+	}
+	#bi-step-4{
+		top:50%;
+		left:$info-h-margin;
+		text-align:center;
+	}
+	
+}
+
 .subwrap{
 	width: $sub-wrapper-width;
 	padding: 0 15px;
 	margin: 0 auto;
 	position: relative;
+}
+
+
+.simple-button{
+	
+
+	
+	cursor:pointer;
+	
+	transition: $base-transition;
+	
+	
+	
+	.sb-label{
+		transition: $base-transition;
+		color: $text-color-white;	
+	}
+	.sb-ico{
+		transition: $base-transition;
+		background: $flair-green;
+		color: $text-color-black;	
+	}
+}
+
+.simple-button:hover{
+	
+	border-left-color:$fair-green-light !important;
+	.sb-label{
+	}
+	.sb-ico{
+		background: $fair-green-light !important;
+		color: $text-color-white !important;
+	}
+}
+.simple-button:active{
+	
+	border-left-color:$fair-green-light !important;
+	.sb-label{
+	}
+	.sb-ico{
+		background: $fair-green-light !important;
+		color: $text-color-black !important;
+	}
 }
 
 
@@ -111,8 +248,8 @@
 				width: 280px;
 			}
 			.icon{
-				background: #6EDD8F;
-				color: #03172B;
+				background: $flair-green;
+				color: $text-color-black;
 				position: absolute;
 				height: 62px;
 				width: 62px;
@@ -163,8 +300,32 @@
 			border-left-color:$flair-green;
 			border-left-style:solid;
 			
-			padding: 0px 0px 0px 15px;
+			
+			padding: 0px 30px 0px 15px;
 			margin: 0px 0px 10px 0px;
+			
+			.close-btn{
+				float:right;
+				background:$flair-green;
+				color:$text-color-black;
+				width: 20px;
+				height: 20px;
+				line-height: 100%;
+				font-family: ReplicaFlairStd-Regular;
+				font-size: 11pt;
+				padding: 2px 0 0px 7px;
+				margin: 0 -30px 0 0;
+			}
+			.close-btn:hover{
+				background:$fair-green-light;
+				color:$text-color-white;
+			}
+			.close-btn:active{
+				background:$fair-green-light;
+			}
+			.close-btn:after{
+				content:"\78";
+			}
 		
 			.axe{
 			}

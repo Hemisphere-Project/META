@@ -2,6 +2,9 @@
  * modules/variables
  * ---
  */
+ 
+ 
+ $base-transition : all 0.2s ease-out;
 
 
 /**
@@ -21,6 +24,7 @@ $text-color: #fff;
 $body-bg: #fff;
 $selection-bg: #04A4CC;
 $flair-green: #6EDD8F;
+$fair-green-light : #75FF9E;
 $text-color-white: #FFF;
 $text-color-black: #03172B;
 
@@ -39,6 +43,10 @@ $margin-horizontal-base: 5px;
 $margin-vertical-base: 5px;
 $margin-horizontal-large: 0;//15px;
 $margin-vertical-large: 15px;
+
+
+$info-v-margin: 30px;
+$info-h-margin: 25px;
 
 
 /**
