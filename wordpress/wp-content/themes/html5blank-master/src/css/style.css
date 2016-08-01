@@ -604,7 +604,9 @@ input[type="search"] {
   font-size: 16pt;
 }
 .right-menu .selected-paths-section {
+  position: absolute;
   height: 300px;
+  width: 300px;
 }
 .right-menu .selected-paths-section .path {
   border-left-width: 4px;
@@ -684,6 +686,68 @@ input[type="search"] {
   content: "\58";
 }
 .right-menu .buttons-group .button .validate-ico:after {
+  content: "\58";
+}
+
+.summary-title-container {
+  font-family: "ReplicaFlairStd-Regular";
+  font-size: 31pt;
+  line-height: 1;
+  width: 100%;
+  text-align: center;
+  margin-top: 42px;
+}
+.summary-title-container .summary-title-1 {
+  color: #FFF;
+}
+.summary-title-container .summary-title-2 {
+  color: #6EDD8F;
+}
+
+.paths-summary-container {
+  height: 300px;
+  width: 1024px;
+  text-align: center;
+  padding: 113px 0 0 64px;
+}
+.paths-summary-container .path {
+  float: left;
+  padding: 0px 30px 0px 5px;
+  margin: 0px 0px 10px 15px;
+  border-left-width: 4px;
+  border-left-style: solid;
+  max-width: 300px;
+  text-align: left;
+}
+
+.save-as-pdf-btn-container {
+  width: 100%;
+  text-align: center;
+}
+.save-as-pdf-btn-container #save-as-pdf-btn {
+  border-left-width: 4px;
+  border-left-color: #6EDD8F;
+  border-left-style: solid;
+  height: 34px;
+  width: 150px;
+  margin: auto;
+  background: #03172B;
+}
+.save-as-pdf-btn-container #save-as-pdf-btn .text {
+  margin: 8px 0px 0 -43px;
+  position: absolute;
+}
+.save-as-pdf-btn-container #save-as-pdf-btn .save-as-pdf-ico {
+  background: #6EDD8F;
+  position: absolute;
+  height: 34px;
+  width: 34px;
+  margin-left: 50px;
+  font-family: ReplicaFlairStd-Regular;
+  font-size: 19pt;
+  padding: 0px 8px;
+}
+.save-as-pdf-btn-container #save-as-pdf-btn .save-as-pdf-ico:after {
   content: "\58";
 }
 

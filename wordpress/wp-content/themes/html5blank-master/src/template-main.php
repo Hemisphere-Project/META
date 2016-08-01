@@ -145,10 +145,30 @@
 						$args = array( 'post_type' => 'summary', 'posts_per_page' => 10 );
 						$loop = new WP_Query( $args );
 						while ( $loop->have_posts() ) : $loop->the_post();?>
-							<?php echo types_render_field( "summary-title", array() ); ?>
-							<?php echo types_render_field( "summary-title-2", array() ); ?>
-							<?php echo types_render_field( "send-button", array()); ?>
-							<?php echo types_render_field( "save-as-pdf", array()); ?>
+							<div class="summary-title-container">
+								<span class="summary-title-1">
+									<?php echo types_render_field( "summary-title", array() ); ?>
+								</span>
+								<span class="summary-title-2">
+									<?php echo types_render_field( "summary-title-2", array() ); ?>
+								</span>
+							</div>
+							<div class="paths-summary-container">
+								<!--<div id="Enact taxation on international financial transactions" class="path" style="border-color:#E64047"><div class="close-btn"></div><div class="axe"><span class="axe-prefix" style="color:#E64047">AXE: </span><span>STAY UNITED<span></span></span></div><div class="subcategory"><span class="category-prefix" style="color:#E64047">SUBCATEGORY: </span><span>INCREASE INTERNATIONAL COOPERATION</span></div></div><div id="Create robotic workforce legislative framework" class="path" style="border-color:#4AA6E7"><div class="close-btn"></div><div class="axe"><span class="axe-prefix" style="color:#4AA6E7">AXE: </span><span>PUSH FORWARD<span></span></span></div><div class="subcategory"><span class="category-prefix" style="color:#4AA6E7">SUBCATEGORY: </span><span>SUPPORT ROBOTICS AND AI DEVELOPMENT</span></div></div><div id="Develop MRI imaging processes" class="path" style="border-color:#4AA6E7"><div class="close-btn"></div><div class="axe"><span class="axe-prefix" style="color:#4AA6E7">AXE: </span><span>PUSH FORWARD<span></span></span></div><div class="subcategory"><span class="category-prefix" style="color:#4AA6E7">SUBCATEGORY: </span><span>FOSTER LIFE SCIENCES DEVELOPMENT</span></div></div>
+							-->
+							</div>
+							<!--<?php echo types_render_field( "send-button", array()); ?>-->
+							<div class="save-as-pdf-btn-container">
+								<div id="save-as-pdf-btn" class="button simple-button">
+									<span class="text sb-label">
+										<?php echo types_render_field( "save-as-pdf", array()); ?>
+									</span>
+									<span class="icon save-as-pdf-ico sb-ico">
+									</span>
+								</div>
+							</div>
+							
+							
 						<?php endwhile; ?>
 					</div>
 				</section>

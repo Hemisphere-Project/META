@@ -292,7 +292,9 @@
 		font-size: 16pt;
 	}
 	.selected-paths-section{
-		height:300px;	
+		position:absolute;
+		height:300px;
+		width:$planetary-agenda-menu-width;
 		
 		.path{
 			
@@ -402,6 +404,80 @@
 			}
 		}
 	}
+	
+}
+
+
+.summary-title-container{
+
+	font-family: "ReplicaFlairStd-Regular";
+	font-size: 31pt;
+	line-height:1;
+	width: 100%;
+	text-align: center;
+	margin-top: 42px;
+	
+	.summary-title-1{
+		color: $text-color-white;
+	}
+	.summary-title-2{
+		color: $flair-green;
+	}
+	
+}
+.paths-summary-container{
+	height:300px;
+	width: $sub-wrapper-width;
+	text-align: center;
+	padding: 113px 0 0 64px ;
+	
+	
+	.path{
+		float:left; 
+		padding: 0px 30px 0px 5px;
+		margin: 0px 0px 10px 15px;
+		border-left-width:4px;
+		border-left-style:solid;
+		max-width:300px;
+		text-align: left;	
+	}
+	
+}
+.save-as-pdf-btn-container{
+	width:100%;
+	text-align: center;
+	
+	#save-as-pdf-btn{
+		
+		border-left-width:4px;
+		border-left-color:$flair-green;
+		border-left-style:solid;
+		height:34px;
+		width:150px;
+		margin : auto;
+		background: $text-color-black;
+		
+		.text{
+			margin: 8px 0px 0 -43px;
+			position: absolute;	
+		}
+		
+		.save-as-pdf-ico{
+			background: $flair-green;
+			position: absolute;
+			height: 34px;
+			width: 34px;
+			margin-left: 50px;
+			font-family: ReplicaFlairStd-Regular;
+			font-size: 19pt;
+			padding: 0px 8px;	
+		}
+		
+		.save-as-pdf-ico:after{
+			content:"\58";
+		}
+	}
+
 }
 	
 	
