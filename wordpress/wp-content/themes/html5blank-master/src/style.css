@@ -40,33 +40,40 @@
  * ---
  * Declare fonts here
  */
-/*
-@font-face {
-  font-family: "Font-Name";
-  src: url("fonts/font-name.eot");
-  src: url("fonts/font-name.eot?#iefix") format("embedded-opentype"),
-    url("fonts/font-name.woff") format("woff"),
-    url("fonts/font-name.ttf") format("truetype"),
-    url("fonts/font-name.svg#font-name") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-*/
 @font-face {
   font-family: 'MyriadPro-Regular';
   src: url("fonts/MyriadPro-Regular/MyriadPro-Regular.eot?#iefix") format("embedded-opentype"), url("fonts/MyriadPro-Regular/MyriadPro-Regular.otf") format("opentype"), url("fonts/MyriadPro-Regular/MyriadPro-Regular.woff") format("woff"), url("fonts/MyriadPro-Regular/MyriadPro-Regular.ttf") format("truetype"), url("fonts/MyriadPro-Regular/MyriadPro-Regular.svg#fonts/MyriadPro-Regular/MyriadPro-Regular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+/*
 @font-face {
   font-family: 'ReplicaFlairStd-Italic';
-  src: url("fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.eot?#iefix") format("embedded-opentype"), url("fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.otf") format("opentype"), url("fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.woff") format("woff"), url("fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.ttf") format("truetype"), url("fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.svg#fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic") format("svg");
+  src: url('fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.eot?#iefix') format('embedded-opentype'),  url('fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.otf')  format('opentype'),
+	     url('fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.woff') format('woff'), url('fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.ttf')  format('truetype'), url('fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.svg#fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'ReplicaFlairStd-Regular';
+  src: url('fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.eot?#iefix') format('embedded-opentype'),  url('fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.otf')  format('opentype'),
+	     url('fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.woff') format('woff'), url('fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.ttf')  format('truetype'), url('fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.svg#fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}*/
+@font-face {
+  font-family: "ReplicaStd-Regular";
+  src: url("fonts/lineto-replica-regular.eot");
+  src: url("fonts/lineto-replica-regular.eot?#iefix") format("embedded-opentype"), url("fonts/lineto-replica-regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ReplicaFlairStd-Regular';
-  src: url("fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.eot?#iefix") format("embedded-opentype"), url("fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.otf") format("opentype"), url("fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.woff") format("woff"), url("fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.ttf") format("truetype"), url("fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.svg#fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular") format("svg");
+  font-family: "ReplicaStd-Italic";
+  src: url("fonts/lineto-replica-italic.eot");
+  src: url("fonts/lineto-replica-italic.eot?#iefix") format("embedded-opentype"), url("fonts/lineto-replica-italic.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
