@@ -21,7 +21,7 @@
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 //define('DB_NAME', 'flaremetadb');
-define('DB_NAME', 'flair_meta');
+define('DB_NAME', 'flair-meta');
 
 /** MySQL database username */
 //define('DB_USER', 'root');

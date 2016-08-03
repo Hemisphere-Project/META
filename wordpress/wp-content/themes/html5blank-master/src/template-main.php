@@ -114,14 +114,14 @@
 									<span class="icon generate-ico sb-ico">
 									</span>
 								</div>
-								<div id="reset-btn" class="button simple-button">
+								<div id="reset-btn" class="button simple-button disabled">
 									<span class="text sb-label">
 										<?php echo types_render_field( "reset-button", array()); ?>
 									</span>
 									<span class="icon reset-ico sb-ico">
 									</span>
 								</div>
-								<div id="validate-btn" class="button simple-button">
+								<div id="validate-btn" class="button simple-button disabled">
 									<span class="text sb-label">
 										<?php echo types_render_field( "ok-button", array()); ?>
 									</span>

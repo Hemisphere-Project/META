@@ -295,7 +295,6 @@ function click(d) {
 		}else{
 			completePaths.addPath(d);
 		}
-		
 	}
 	
 	//console.log(completePaths);
@@ -314,6 +313,7 @@ function click(d) {
 	}
 	update(d);
 	completePaths.updateDisplay();
+	updateButtonsStatus();
 }
 
 
@@ -374,6 +374,21 @@ function unselectChildren(d){
 /**************************** UX *************************************/
 /*********************************************************************/
 
+function updateButtonsStatus(){
+	if(completePaths.length >= completePaths.maxLength){
+		$("#generate-btn").addClass("disabled");
+		$("#validate-btn").removeClass("disabled");
+	}else{
+		$("#generate-btn").removeClass("disabled");
+		$("#validate-btn").addClass("disabled");	
+	}
+	if(root._children){
+		$("#reset-btn").addClass("disabled");
+	}else{
+		$("#reset-btn").removeClass("disabled");
+	}
+}
+
 
 $(".step-next-button").on("click", function(event){
 	console.log(".step-next-button");	
@@ -387,7 +402,18 @@ $("#generate-btn").on("click", function(event){
 
 $("#reset-btn").on("click", function(event){
 	console.log("#reset-btn");
-	randBot.stop();	
+	
+	randBot.stop();
+	
+	unselectChildren(root);
+	collapse(root);
+	update(root);
+	completePaths.updateDisplay();
+	updateButtonsStatus();
+	
+	updateSVGPos(root);
+	
+		
 });
 
 $("#validate-btn").on("click", function(event){
@@ -405,6 +431,7 @@ $('body').on('click', '.path .close-btn', function(event) {
 			}
 			
 		completePaths.updateDisplay();
+		updateButtonsStatus();
 });
 
 
@@ -453,6 +480,8 @@ RandomBot.prototype.start = function(){
 	// diable node click
 	nodeClickEnabled = false;
 	
+	
+	
 	if(completePaths.length < completePaths.maxLength)
 		this.randomSelect();
 	else
@@ -474,6 +503,8 @@ RandomBot.prototype.stop = function(){
 	
 	//enable node click
 	nodeClickEnabled = true;
+	
+	updateButtonsStatus();
 	
 	this.isRunning = false;
 }
@@ -506,6 +537,9 @@ RandomBot.prototype.selectNode = function(d){
 	this.currentSelection = d;
 
 	updateSVGPos(d);
+	
+	updateButtonsStatus();
+	
 	
 	// push pop paths
 	if(!d.children && !d._children){
