@@ -397,7 +397,7 @@ input[type="search"] {
 
 /* override fullPage bullet nav */
 .fp-slidesNav {
-  margin-left: 0px !important;
+  margin-left: -50px !important;
 }
 .fp-slidesNav li:nth-child(0n+3), .fp-slidesNav li:nth-child(0n+4) {
   visibility: hidden;

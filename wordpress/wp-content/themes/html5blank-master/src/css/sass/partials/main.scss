@@ -22,7 +22,7 @@
 /* override fullPage bullet nav */
 
 .fp-slidesNav{
-	margin-left: 0px !important;	
+	margin-left: -50px !important;	
 	li:nth-child(0n+3),li:nth-child(0n+4){	
 		visibility:hidden;
 	}
