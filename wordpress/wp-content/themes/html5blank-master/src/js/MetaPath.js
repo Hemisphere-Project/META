@@ -1,3 +1,4 @@
+
 function MetaPath(lastNode){
 	this.gp = lastNode.gp;
 	this.axe = "";//this.getAxe(lastNode.gp,root);
@@ -11,7 +12,6 @@ function MetaPath(lastNode){
 	this.subcategory = this.nodes[this.nodes.length-3].name;
 }
 
-// buggy
 MetaPath.prototype.extractNodes = function(d){
 	var self = this;
 	function walkParents(obj){
@@ -25,9 +25,6 @@ MetaPath.prototype.extractNodes = function(d){
 }
 
 
-/*MetaPath.prototype.getAxe = function(gp,root){
-	return root.children[gp-1].name;	
-}*/
 
 
 
