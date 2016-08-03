@@ -12,6 +12,11 @@
 .hidden{
 	visibility:hidden;
 }
+.triple-scale{
+	transform: scale(3, 3);
+	-ms-transform: scale(3,3);
+	-webkit-transform: scale(3,3);
+}
 
 /* override fullPage bullet nav */
 
@@ -407,6 +412,9 @@
 	
 }
 
+#summary-slide{
+	@include linear-gradient(#43345E, #70345D);	
+}
 
 .summary-title-container{
 

@@ -24,6 +24,8 @@ root;
 var colors = ["black","#FEBC59","#E64047","#4AA6E7"];
 
 
+
+
 /*********************************************************************/
 /********************** COMPLETE PATH CLASS **************************/
 /*********************************************************************/
@@ -403,6 +405,30 @@ $('body').on('click', '.path .close-btn', function(event) {
 			}
 			
 		completePaths.updateDisplay();
+});
+
+
+
+var PDFOutput = false;
+$("#save-as-pdf-btn").on("click", function(event){
+	console.log("#save-as-pdf-btn");	
+
+        $("#save-as-pdf-btn").addClass("hidden");
+        html2canvas($('#summary-slide'), {
+        		onrendered: function(canvas) {
+        			//$('body').append("<img src='"+canvas.toDataURL("image/jpeg,1.0")+"' />");
+        			if(!PDFOutput){
+        				download(canvas.toDataURL("image/jpeg,1.0"),"summary.jpg","img/jpeg");
+        			}else{
+        				var img =canvas.toDataURL();
+        				var pdf = new jsPDF("landscape","mm",[$('#summary-slide').width(),$('#summary-slide').height()]);
+        				pdf.addImage(img, 'JPEG', 0, 0, $('#summary-slide').width(),$('#summary-slide').height());
+        				pdf.save('summary.pdf');
+        			}
+        			$("#save-as-pdf-btn").removeClass("hidden");
+        		},
+        		background:"#000",
+        });
 });
 
 

@@ -142,6 +142,15 @@ function html5blank_conditional_scripts()
         wp_register_script('fullPage', get_template_directory_uri() . '/js/lib/jquery.fullPage.min.js', array('jquery'), '2.8.2');
         wp_enqueue_script('fullPage');
         
+        wp_register_script('jspdf', get_template_directory_uri() . '/js/lib/jspdf.min.js', array('jquery'), '1.2.60');
+        wp_enqueue_script('jspdf');
+        
+        wp_register_script('html2canvas', get_template_directory_uri() . '/js/lib/html2canvas.js', array('jquery'), '1.2.60');
+        wp_enqueue_script('html2canvas');
+        
+        wp_register_script('downloadjs', get_template_directory_uri() . '/js/lib/download2.js', array('jquery'), '1.2.60');
+        wp_enqueue_script('downloadjs');
+        
         wp_register_script('mainScript', get_template_directory_uri() . '/js/main.js', array('jquery','fullPage','d3'), '1.0.0');
         wp_enqueue_script('mainScript');
         

@@ -368,6 +368,12 @@ input[type="search"] {
   visibility: hidden;
 }
 
+.triple-scale {
+  transform: scale(3, 3);
+  -ms-transform: scale(3, 3);
+  -webkit-transform: scale(3, 3);
+}
+
 /* override fullPage bullet nav */
 .fp-slidesNav {
   margin-left: 0px !important;
@@ -687,6 +693,12 @@ input[type="search"] {
 }
 .right-menu .buttons-group .button .validate-ico:after {
   content: "\58";
+}
+
+#summary-slide {
+  background: #43345E;
+  background: -webkit-linear-gradient(-90deg, #43345E, #70345D);
+  background: linear-gradient(180deg, #43345E, #70345D);
 }
 
 .summary-title-container {

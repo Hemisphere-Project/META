@@ -134,7 +134,7 @@
 				</section>
 				<!-- /section -->
 				<!-- section -->
-				<section class="slide">
+				<section id="summary-slide" class="slide" >
 					<div class="borderinfo-container">
 						<div id="bi-meta-4" class="borderinfo-element">META<br>WORKSHOP</div>
 						<div id="bi-flairedu-4" class="borderinfo-element">FLAIR<br>EDUCATION</div>
@@ -154,8 +154,8 @@
 								</span>
 							</div>
 							<div class="paths-summary-container">
-								<!--<div id="Enact taxation on international financial transactions" class="path" style="border-color:#E64047"><div class="close-btn"></div><div class="axe"><span class="axe-prefix" style="color:#E64047">AXE: </span><span>STAY UNITED<span></span></span></div><div class="subcategory"><span class="category-prefix" style="color:#E64047">SUBCATEGORY: </span><span>INCREASE INTERNATIONAL COOPERATION</span></div></div><div id="Create robotic workforce legislative framework" class="path" style="border-color:#4AA6E7"><div class="close-btn"></div><div class="axe"><span class="axe-prefix" style="color:#4AA6E7">AXE: </span><span>PUSH FORWARD<span></span></span></div><div class="subcategory"><span class="category-prefix" style="color:#4AA6E7">SUBCATEGORY: </span><span>SUPPORT ROBOTICS AND AI DEVELOPMENT</span></div></div><div id="Develop MRI imaging processes" class="path" style="border-color:#4AA6E7"><div class="close-btn"></div><div class="axe"><span class="axe-prefix" style="color:#4AA6E7">AXE: </span><span>PUSH FORWARD<span></span></span></div><div class="subcategory"><span class="category-prefix" style="color:#4AA6E7">SUBCATEGORY: </span><span>FOSTER LIFE SCIENCES DEVELOPMENT</span></div></div>
-							-->
+								<div id="Enact taxation on international financial transactions" class="path" style="border-color:#E64047"><div class="close-btn"></div><div class="axe"><span class="axe-prefix" style="color:#E64047">AXE: </span><span>STAY UNITED<span></span></span></div><div class="subcategory"><span class="category-prefix" style="color:#E64047">SUBCATEGORY: </span><span>INCREASE INTERNATIONAL COOPERATION</span></div></div><div id="Create robotic workforce legislative framework" class="path" style="border-color:#4AA6E7"><div class="close-btn"></div><div class="axe"><span class="axe-prefix" style="color:#4AA6E7">AXE: </span><span>PUSH FORWARD<span></span></span></div><div class="subcategory"><span class="category-prefix" style="color:#4AA6E7">SUBCATEGORY: </span><span>SUPPORT ROBOTICS AND AI DEVELOPMENT</span></div></div><div id="Develop MRI imaging processes" class="path" style="border-color:#4AA6E7"><div class="close-btn"></div><div class="axe"><span class="axe-prefix" style="color:#4AA6E7">AXE: </span><span>PUSH FORWARD<span></span></span></div><div class="subcategory"><span class="category-prefix" style="color:#4AA6E7">SUBCATEGORY: </span><span>FOSTER LIFE SCIENCES DEVELOPMENT</span></div></div>
+							
 							</div>
 							<!--<?php echo types_render_field( "send-button", array()); ?>-->
 							<div class="save-as-pdf-btn-container">
