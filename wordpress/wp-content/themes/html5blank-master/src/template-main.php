@@ -34,7 +34,7 @@
 						</div>
 						<div class="col-1-2 right-column">
 							<div class="intro-flair intro-box intro-box-black">
-								<div class="title">&#183LAIR</div>
+								<div class="title"><span style="font-family: ReplicaFlairStd-Regular;">&#183</span>LAIR</div>
 								<div class="text">
 								<?php echo types_render_field( "flair", array()); ?>
 								</div>

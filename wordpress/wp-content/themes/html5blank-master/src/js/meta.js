@@ -5,6 +5,18 @@ $(document).ready(function() {
 /**************************** GLOBALS ********************************/
 /*********************************************************************/
 
+
+var browser = "";
+
+if(navigator.userAgent.match(/firefox/i))
+	browser = "firefox";
+else if(navigator.userAgent.match(/safari/i))
+	browser = "safari";
+else if(navigator.userAgent.match(/chrome/i))
+	browser = "chrome"
+
+console.log(browser);
+
 		
 var nodeWidth = 300;
 var nodeHeight = 30;
@@ -22,7 +34,6 @@ duration = 750,
 root;
 
 var colors = ["black","#FEBC59","#E64047","#4AA6E7"];
-
 
 
 
@@ -117,7 +128,6 @@ function updateSVGPos(node){
 /**************************** ZOOM ***********************************/
 /*********************************************************************/
 
-
 var zoom = d3.behavior.zoom();
 d3.select("svg").call(zoom.scaleExtent([1, 2]).on("zoom", onZoom));
 
@@ -127,10 +137,13 @@ zoom.translate([width/2, height/2]);
 function onZoom() {
 	svgCurrTranslate = d3.event.translate;
 	svgCurrScale = d3.event.scale;
-	svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+	//zoom.center([d3.event.sourceEvent.clientX,d3.event.sourceEvent.clientY]);
+	svg.attr("transform", "translate(" + svgCurrTranslate + ")scale(" + svgCurrScale + ")");
 }
 
-
+$( "svg" ).mousemove(function(event) {
+  zoom.center([event.clientX,event.clientY]);
+});
 
 
 /*********************************************************************/
@@ -433,8 +446,6 @@ $('body').on('click', '.path .close-btn', function(event) {
 		completePaths.updateDisplay();
 		updateButtonsStatus();
 });
-
-
 
 var PDFOutput = false;
 $("#save-as-pdf-btn").on("click", function(event){

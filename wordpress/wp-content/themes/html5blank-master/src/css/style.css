@@ -41,25 +41,21 @@
 	     url('fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.woff') format('woff'), url('fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.ttf')  format('truetype'), url('fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic.svg#fonts/ReplicaFlairStd-Italic/ReplicaFlairStd-Italic') format('svg');
   font-weight: normal;
   font-style: normal;
-}
-
-
-@font-face {
-  font-family: 'ReplicaFlairStd-Regular';
-  src: url('fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.eot?#iefix') format('embedded-opentype'),  url('fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.otf')  format('opentype'),
-	     url('fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.woff') format('woff'), url('fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.ttf')  format('truetype'), url('fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.svg#fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular') format('svg');
-  font-weight: normal;
-  font-style: normal;
 }*/
 @font-face {
-  font-family: "ReplicaStd-Regular";
-  src: url("fonts/lineto-replica-regular.eot");
-  src: url("fonts/lineto-replica-regular.eot?#iefix") format("embedded-opentype"), url("fonts/lineto-replica-regular.woff") format("woff");
+  font-family: 'ReplicaFlairStd-Regular';
+  src: url("fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.eot?#iefix") format("embedded-opentype"), url("fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.otf") format("opentype"), url("fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.woff") format("woff"), url("fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.ttf") format("truetype"), url("fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular.svg#fonts/ReplicaFlairStd-Regular/ReplicaFlairStd-Regular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "ReplicaStd-Italic";
+  font-family: "ReplicaStd-Regular";
+  src: url("fonts/lineto-replica-regular.eot"), url("fonts/lineto-replica-regular.eot?#iefix") format("embedded-opentype"), url("fonts/lineto-replica-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ReplicaFlairStd-Italic";
   src: url("fonts/lineto-replica-italic.eot");
   src: url("fonts/lineto-replica-italic.eot?#iefix") format("embedded-opentype"), url("fonts/lineto-replica-italic.woff") format("woff");
   font-weight: normal;
@@ -396,7 +392,7 @@ input[type="search"] {
   width: 100vw;
   height: 100vh;
   color: #FFF;
-  font-family: "ReplicaFlairStd-Regular";
+  font-family: "ReplicaStd-Regular";
   font-size: 9pt;
 }
 .borderinfo-container .borderinfo-element {
@@ -501,7 +497,7 @@ input[type="search"] {
 }
 
 .intro-title {
-  font-family: "ReplicaFlairStd-Regular";
+  font-family: "ReplicaStd-Regular";
   font-size: 31pt;
   line-height: 1;
   margin-bottom: 30px;
@@ -528,7 +524,7 @@ input[type="search"] {
   padding: 15px 30px;
 }
 .intro-box .title {
-  font-family: ReplicaFlairStd-Regular;
+  font-family: ReplicaStd-Regular;
   font-size: 16pt;
 }
 
@@ -543,7 +539,7 @@ input[type="search"] {
 }
 
 .step-title {
-  font-family: "ReplicaFlairStd-Regular";
+  font-family: "ReplicaStd-Regular";
   font-size: 31pt;
   line-height: 1;
   margin-bottom: 30px;
@@ -569,7 +565,7 @@ input[type="search"] {
   color: #FFF;
   position: absolute;
   height: 36px;
-  font-family: "ReplicaFlairStd-Regular";
+  font-family: "ReplicaStd-Regular";
   font-size: 15pt;
   margin: 15px 10px;
   text-align: center;
@@ -582,7 +578,7 @@ input[type="search"] {
   height: 62px;
   width: 62px;
   right: 66px;
-  font-family: ReplicaFlairStd-Regular;
+  font-family: ReplicaStd-Regular;
   font-size: 24pt;
   padding: 8px 22px;
 }
@@ -614,7 +610,7 @@ input[type="search"] {
   text-align: center;
   margin-top: 60px;
   margin-bottom: 60px;
-  font-family: ReplicaFlairStd-Regular;
+  font-family: ReplicaStd-Regular;
   font-size: 16pt;
 }
 .right-menu .selected-paths-section {
@@ -636,7 +632,7 @@ input[type="search"] {
   width: 20px;
   height: 20px;
   line-height: 100%;
-  font-family: ReplicaFlairStd-Regular;
+  font-family: ReplicaStd-Regular;
   font-size: 11pt;
   padding: 2px 0 0px 7px;
   margin: 0 -30px 0 0;
@@ -689,7 +685,7 @@ input[type="search"] {
   height: 36px;
   width: 36px;
   right: 10px;
-  font-family: ReplicaFlairStd-Regular;
+  font-family: ReplicaStd-Regular;
   font-size: 16pt;
   padding: 5px 12px;
 }
@@ -710,7 +706,7 @@ input[type="search"] {
 }
 
 .summary-title-container {
-  font-family: "ReplicaFlairStd-Regular";
+  font-family: "ReplicaStd-Regular";
   font-size: 31pt;
   line-height: 1;
   width: 100%;
@@ -763,7 +759,7 @@ input[type="search"] {
   height: 34px;
   width: 34px;
   margin-left: 50px;
-  font-family: ReplicaFlairStd-Regular;
+  font-family: ReplicaStd-Regular;
   font-size: 19pt;
   padding: 0px 8px;
 }
