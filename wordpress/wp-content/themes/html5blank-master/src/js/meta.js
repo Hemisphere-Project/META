@@ -6,17 +6,6 @@ $(document).ready(function() {
 /*********************************************************************/
 
 
-var browser = "";
-
-if(navigator.userAgent.match(/firefox/i))
-	browser = "firefox";
-else if(navigator.userAgent.match(/safari/i))
-	browser = "safari";
-else if(navigator.userAgent.match(/chrome/i))
-	browser = "chrome"
-
-console.log(browser);
-
 		
 var nodeWidth = 300;
 var nodeHeight = 30;
@@ -450,11 +439,10 @@ $('body').on('click', '.path .close-btn', function(event) {
 var PDFOutput = false;
 $("#save-as-pdf-btn").on("click", function(event){
 	console.log("#save-as-pdf-btn");	
-
         $("#save-as-pdf-btn").addClass("hidden");
         html2canvas($('#summary-slide'), {
         		onrendered: function(canvas) {
-        			//$('body').append("<img src='"+canvas.toDataURL("image/jpeg,1.0")+"' />");
+        			/*$('body').append("<img src='"+canvas.toDataURL("image/jpeg,1.0")+"' />");*/
         			if(!PDFOutput){
         				download(canvas.toDataURL("image/jpeg,1.0"),"summary.jpg","img/jpeg");
         			}else{
@@ -575,4 +563,5 @@ RandomBot.prototype.selectNode = function(d){
 
 
 });
+
 
