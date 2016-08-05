@@ -26,6 +26,7 @@ var colors = ["black","#FEBC59","#E64047","#4AA6E7"];
 
 
 
+
 /*********************************************************************/
 /********************** COMPLETE PATH CLASS **************************/
 /*********************************************************************/
@@ -436,7 +437,19 @@ $('body').on('click', '.path .close-btn', function(event) {
 		updateButtonsStatus();
 });
 
+
+var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
+var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
+if ((is_chrome)&&(is_safari)) {is_safari=false;}
+if ((is_chrome)&&(is_opera)) {is_chrome=false;}
+    
+    
 var PDFOutput = false;
+if(is_safari) PDFOutput = true; // for the moment force pdf download for safari
+
 $("#save-as-pdf-btn").on("click", function(event){
 	console.log("#save-as-pdf-btn");	
         $("#save-as-pdf-btn").addClass("hidden");
@@ -444,7 +457,7 @@ $("#save-as-pdf-btn").on("click", function(event){
         		onrendered: function(canvas) {
         			/*$('body').append("<img src='"+canvas.toDataURL("image/jpeg,1.0")+"' />");*/
         			if(!PDFOutput){
-        				download(canvas.toDataURL("image/jpeg,1.0"),"summary.jpg","img/jpeg");
+        					download(canvas.toDataURL("image/jpeg,1.0"),"summary.jpg","image/jpeg");		
         			}else{
         				var img =canvas.toDataURL();
         				var pdf = new jsPDF("landscape","mm",[$('#summary-slide').width(),$('#summary-slide').height()]);
