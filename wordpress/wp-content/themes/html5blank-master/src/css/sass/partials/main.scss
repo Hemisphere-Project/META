@@ -122,18 +122,20 @@
 	}
 	.sb-ico{
 		transition: $base-transition;
-		background: $flair-green;
+		background-color: $flair-green !important;
 		color: $text-color-black;	
 	}
 }
 
 .simple-button:hover{
 	
+	cursor:pointer;
+	
 	border-left-color:$fair-green-light !important;
 	.sb-label{
 	}
 	.sb-ico{
-		background: $fair-green-light !important;
+		background-color: $fair-green-light !important;
 		color: $text-color-white !important;
 	}
 }
@@ -243,7 +245,7 @@
 			background: $text-color-black;
 			
 			.text{
-				
+				cursor:pointer !important;
 				color: $text-color-white;
 				position: absolute;
 				height: $button-height;
@@ -256,6 +258,7 @@
 				width: 280px;
 			}
 			.icon{
+				cursor:pointer !important;
 				background: $flair-green;
 				color: $text-color-black;
 				position: absolute;
@@ -265,9 +268,14 @@
 				font-family: ReplicaStd-Regular;
 				font-size: 24pt;
 				padding: 8px 22px;
+				
 			}
-			.next-ico:after{
-				content:"\58";	
+			.next-ico{
+				background-color:$flair-green;
+				background: url(icons/confirm.svg) no-repeat;
+				background-position: center bottom;
+				margin: 0 0 0 0 ;
+				background-size: 45px;
 			}
 			
 		}
@@ -328,7 +336,7 @@
 			}
 			.close-btn:hover{
 				background:$fair-green-light;
-				color:$text-color-white;
+				/*color:$text-color-white;*/
 			}
 			.close-btn:active{
 				background:$fair-green-light;
@@ -377,7 +385,7 @@
 			background: $text-color-black;
 			
 			.text{
-				
+				cursor:pointer;
 				color: $text-color-white;
 				position: absolute;
 				height: $button-height;
@@ -387,6 +395,7 @@
 				width: $planetary-agenda-menu-width - 86px;
 			}
 			.icon{
+				cursor:pointer !important;
 				background: $flair-green;
 				color: $text-color-black;
 				position: absolute;
@@ -399,16 +408,31 @@
 				padding: 5px 12px;
 			}
 			
-			.generate-ico:after{
-				content:"\58";	
+			.generate-ico{
+				background-color:$flair-green;
+				background: url(icons/random.svg) no-repeat;
+				background-position: center bottom;
+				margin: 0 0 0 0 ;
+				background-size: 23px;
+				color:white;
 			}
 			
-			.reset-ico:after{
-				content:"\58";
+			.reset-ico{
+				background-color:$flair-green;
+				background: url(icons/again.svg) no-repeat;
+				background-position: center bottom;
+				margin: 0 0 0 0 ;
+				background-size: 23px;
+				color:white;
 			}
 			
-			.validate-ico:after{
-				content:"\58";
+			.validate-ico{
+				background-color:$flair-green;
+				background: url(icons/confirm.svg) no-repeat;
+				background-position: center bottom;
+				margin: 0 0 0 0 ;
+				background-size: 23px;
+				color:white;
 			}
 		}
 	}
@@ -469,11 +493,13 @@
 		background: $text-color-black;
 		
 		.text{
+			cursor:pointer !important;
 			margin: 8px 0px 0 -43px;
 			position: absolute;	
 		}
 		
 		.save-as-pdf-ico{
+			cursor:pointer !important;
 			background: $flair-green;
 			position: absolute;
 			height: 34px;
@@ -484,8 +510,11 @@
 			padding: 0px 8px;	
 		}
 		
-		.save-as-pdf-ico:after{
-			content:"\58";
+		.save-as-pdf-ico{
+			background-color:$flair-green;
+			background: url(icons/confirm.svg) no-repeat;
+			background-position: center bottom;
+			background-size: 23px;
 		}
 	}
 

@@ -489,15 +489,16 @@ input[type="search"] {
 .simple-button .sb-ico {
   -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-  background: #6EDD8F;
+  background-color: #6EDD8F !important;
   color: #03172B;
 }
 
 .simple-button:hover {
+  cursor: pointer;
   border-left-color: #75FF9E !important;
 }
 .simple-button:hover .sb-ico {
-  background: #75FF9E !important;
+  background-color: #75FF9E !important;
   color: #FFF !important;
 }
 
@@ -586,6 +587,7 @@ input[type="search"] {
   background: #03172B;
 }
 .step-next-button .text {
+  cursor: pointer !important;
   color: #FFF;
   position: absolute;
   height: 36px;
@@ -596,6 +598,7 @@ input[type="search"] {
   width: 280px;
 }
 .step-next-button .icon {
+  cursor: pointer !important;
   background: #6EDD8F;
   color: #03172B;
   position: absolute;
@@ -606,8 +609,12 @@ input[type="search"] {
   font-size: 24pt;
   padding: 8px 22px;
 }
-.step-next-button .next-ico:after {
-  content: "\58";
+.step-next-button .next-ico {
+  background-color: #6EDD8F;
+  background: url(icons/confirm.svg) no-repeat;
+  background-position: center bottom;
+  margin: 0 0 0 0;
+  background-size: 45px;
 }
 
 .planetary-agenda {
@@ -664,7 +671,7 @@ input[type="search"] {
 }
 .right-menu .selected-paths-section .path .close-btn:hover {
   background: #75FF9E;
-  color: #FFF;
+  /*color:$text-color-white;*/
 }
 .right-menu .selected-paths-section .path .close-btn:active {
   background: #75FF9E;
@@ -696,6 +703,7 @@ input[type="search"] {
   background: #03172B;
 }
 .right-menu .buttons-group .button .text {
+  cursor: pointer;
   color: #FFF;
   position: absolute;
   height: 36px;
@@ -704,6 +712,7 @@ input[type="search"] {
   width: 214px;
 }
 .right-menu .buttons-group .button .icon {
+  cursor: pointer !important;
   background: #6EDD8F;
   color: #03172B;
   position: absolute;
@@ -714,14 +723,29 @@ input[type="search"] {
   font-size: 16pt;
   padding: 5px 12px;
 }
-.right-menu .buttons-group .button .generate-ico:after {
-  content: "\58";
+.right-menu .buttons-group .button .generate-ico {
+  background-color: #6EDD8F;
+  background: url(icons/random.svg) no-repeat;
+  background-position: center bottom;
+  margin: 0 0 0 0;
+  background-size: 23px;
+  color: white;
 }
-.right-menu .buttons-group .button .reset-ico:after {
-  content: "\58";
+.right-menu .buttons-group .button .reset-ico {
+  background-color: #6EDD8F;
+  background: url(icons/again.svg) no-repeat;
+  background-position: center bottom;
+  margin: 0 0 0 0;
+  background-size: 23px;
+  color: white;
 }
-.right-menu .buttons-group .button .validate-ico:after {
-  content: "\58";
+.right-menu .buttons-group .button .validate-ico {
+  background-color: #6EDD8F;
+  background: url(icons/confirm.svg) no-repeat;
+  background-position: center bottom;
+  margin: 0 0 0 0;
+  background-size: 23px;
+  color: white;
 }
 
 #summary-slide {
@@ -776,10 +800,12 @@ input[type="search"] {
   background: #03172B;
 }
 .save-as-pdf-btn-container #save-as-pdf-btn .text {
+  cursor: pointer !important;
   margin: 8px 0px 0 -43px;
   position: absolute;
 }
 .save-as-pdf-btn-container #save-as-pdf-btn .save-as-pdf-ico {
+  cursor: pointer !important;
   background: #6EDD8F;
   position: absolute;
   height: 34px;
@@ -789,6 +815,9 @@ input[type="search"] {
   font-size: 19pt;
   padding: 0px 8px;
 }
-.save-as-pdf-btn-container #save-as-pdf-btn .save-as-pdf-ico:after {
-  content: "\58";
+.save-as-pdf-btn-container #save-as-pdf-btn .save-as-pdf-ico {
+  background-color: #6EDD8F;
+  background: url(icons/confirm.svg) no-repeat;
+  background-position: center bottom;
+  background-size: 23px;
 }
