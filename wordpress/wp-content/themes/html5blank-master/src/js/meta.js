@@ -49,8 +49,8 @@ completePaths.updateDisplay = function(){
 	$(".selected-paths-section").empty();
 	$(".paths-summary-container").empty();
 	for(var k=0;k<completePaths.length;k++){
-		$(".selected-paths-section").append("<div id='"+completePaths[k].lastNode.name+"' class='path' style='border-color:"+colors[completePaths[k].gp]+"'><div class='close-btn'></div><div class='axe'><span class='axe-prefix' style='color:"+colors[completePaths[k].gp]+"'>AXE: </span><span>"+completePaths[k].axe+"<span></div><div class='subcategory'><span class='category-prefix' style='color:"+colors[completePaths[k].gp]+"'>SUBCATEGORY: </span><span>"+completePaths[k].subcategory+"</span></div></div>");
-		$(".paths-summary-container").append("<div id='"+completePaths[k].lastNode.name+"' class='path' style='border-color:"+colors[completePaths[k].gp]+"'><div class='axe'><span class='axe-prefix' style='color:"+colors[completePaths[k].gp]+"'>AXE: </span><span>"+completePaths[k].axe+"<span></div><div class='subcategory'><span class='category-prefix' style='color:"+colors[completePaths[k].gp]+"'>SUBCATEGORY: </span><span>"+completePaths[k].subcategory+"</span></div></div>");
+		$(".selected-paths-section").append("<div id='"+completePaths[k].lastNode.name+"' class='path' style='border-color:"+colors[completePaths[k].gp]+"'><div class='close-btn'></div><div class='node-name'><span class='node-name-prefix' style='color:"+colors[completePaths[k].gp]+"'>NODE: </span><span>"+completePaths[k].lastNode.name+"<span></div><div class='axe'><span class='axe-prefix' style='color:"+colors[completePaths[k].gp]+"'>AXE: </span><span>"+completePaths[k].axe+"<span></div><div class='subcategory'><span class='category-prefix' style='color:"+colors[completePaths[k].gp]+"'>SUBCATEGORY: </span><span>"+completePaths[k].subcategory+"</span></div></div>");
+		$(".paths-summary-container").append("<div id='"+completePaths[k].lastNode.name+"' class='path' style='border-color:"+colors[completePaths[k].gp]+"'><div class='node-name'><span class='node-name-prefix' style='color:"+colors[completePaths[k].gp]+"'>NODE: </span><span>"+completePaths[k].lastNode.name+"<span></div><div class='axe'><span class='axe-prefix' style='color:"+colors[completePaths[k].gp]+"'>AXE: </span><span>"+completePaths[k].axe+"<span></div><div class='subcategory'><span class='category-prefix' style='color:"+colors[completePaths[k].gp]+"'>SUBCATEGORY: </span><span>"+completePaths[k].subcategory+"</span></div></div>");
 
 	}
 }
@@ -457,7 +457,7 @@ $("#save-as-pdf-btn").on("click", function(event){
         		onrendered: function(canvas) {
         			/*$('body').append("<img src='"+canvas.toDataURL("image/jpeg,1.0")+"' />");*/
         			if(!PDFOutput){
-        					download(canvas.toDataURL("image/jpeg,1.0"),"summary.jpg","image/jpeg");		
+        					download(canvas.toDataURL("image/jpeg",1.0),"summary.jpg","image/jpeg");		
         			}else{
         				var img =canvas.toDataURL();
         				var pdf = new jsPDF("landscape","mm",[$('#summary-slide').width(),$('#summary-slide').height()]);
